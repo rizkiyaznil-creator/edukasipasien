@@ -456,6 +456,118 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Penumpukan cairan di dalam rongga perut yang membuat perut tampak membesar; dapat terjadi pada kanker ovarium stadium lanjut.',
   },
+
+  // ——— Kemoterapi & Radioterapi ———
+  {
+    term: 'Adjuvan',
+    slug: 'adjuvan',
+    category: 'Pengobatan',
+    aliases: ['terapi adjuvan'],
+    definition:
+      'Terapi tambahan (misalnya kemoterapi atau radioterapi) yang diberikan setelah pengobatan utama — biasanya operasi — untuk membunuh sisa sel kanker dan menurunkan risiko kambuh.',
+  },
+  {
+    term: 'Siklus Kemoterapi',
+    slug: 'siklus-kemoterapi',
+    category: 'Pengobatan',
+    aliases: ['siklus', 'siklus kemo'],
+    definition:
+      'Satu putaran pemberian obat kemoterapi yang diikuti masa istirahat agar tubuh pulih. Pengobatan biasanya terdiri atas beberapa siklus.',
+  },
+  {
+    term: 'Intravena (Infus)',
+    slug: 'intravena',
+    category: 'Pengobatan',
+    aliases: ['infus', 'iv'],
+    definition:
+      'Pemberian obat atau cairan langsung ke pembuluh darah balik (vena), umumnya melalui selang infus.',
+  },
+  {
+    term: 'Chemoport',
+    slug: 'chemoport',
+    category: 'Pengobatan',
+    aliases: ['port', 'port kemo', 'kateter vena sentral'],
+    definition:
+      'Alat kecil yang dipasang di bawah kulit dan tersambung ke pembuluh darah besar, untuk memudahkan pemberian kemoterapi berulang tanpa sering menusuk lengan.',
+  },
+  {
+    term: 'Antiemetik',
+    slug: 'antiemetik',
+    category: 'Pengobatan',
+    aliases: ['obat anti-mual', 'anti-mual'],
+    definition:
+      'Obat untuk mencegah dan meredakan mual serta muntah, sering diberikan bersama kemoterapi.',
+  },
+  {
+    term: 'Radioterapi Eksternal (EBRT)',
+    slug: 'radioterapi-eksternal',
+    category: 'Pengobatan',
+    aliases: ['ebrt', 'radiasi eksternal', 'penyinaran luar'],
+    definition:
+      'Radioterapi yang sumber sinarnya berasal dari mesin di luar tubuh dan diarahkan ke area kanker. Disebut juga EBRT.',
+  },
+  {
+    term: 'Simulasi Radioterapi',
+    slug: 'simulasi-radioterapi',
+    category: 'Pengobatan',
+    aliases: ['simulasi', 'planning radioterapi'],
+    definition:
+      'Tahap persiapan radioterapi untuk menentukan posisi tubuh dan area penyinaran secara tepat, biasanya memakai CT dan penanda kecil pada kulit.',
+  },
+  {
+    term: 'Fraksinasi',
+    slug: 'fraksinasi',
+    category: 'Pengobatan',
+    aliases: ['fraksi'],
+    definition:
+      'Pembagian total dosis radiasi menjadi banyak sesi kecil harian (disebut fraksi) agar lebih efektif melawan kanker dan lebih aman bagi jaringan sehat.',
+  },
+  {
+    term: 'Neutropenia',
+    slug: 'neutropenia',
+    category: 'Efek samping',
+    definition:
+      'Penurunan sel darah putih jenis neutrofil akibat kemoterapi, yang membuat tubuh lebih mudah terkena infeksi.',
+  },
+  {
+    term: 'Anemia',
+    slug: 'anemia',
+    category: 'Efek samping',
+    aliases: ['kurang darah'],
+    definition:
+      'Kekurangan sel darah merah atau hemoglobin yang dapat menimbulkan lemas, pucat, dan mudah lelah.',
+  },
+  {
+    term: 'Trombositopenia',
+    slug: 'trombositopenia',
+    category: 'Efek samping',
+    definition:
+      'Penurunan jumlah keping darah (trombosit) sehingga tubuh lebih mudah memar atau berdarah.',
+  },
+  {
+    term: 'Mukositis',
+    slug: 'mukositis',
+    category: 'Efek samping',
+    aliases: ['sariawan'],
+    definition:
+      'Peradangan dan luka pada lapisan mulut atau saluran cerna (sering berupa sariawan) akibat kemoterapi atau radioterapi.',
+  },
+  {
+    term: 'Alopesia (Rambut Rontok)',
+    slug: 'alopesia',
+    category: 'Efek samping',
+    aliases: ['rambut rontok'],
+    definition:
+      'Kerontokan rambut sebagai efek samping sementara dari sebagian obat kemoterapi. Rambut umumnya tumbuh kembali setelah pengobatan selesai.',
+  },
+  {
+    term: 'Dilator Vagina',
+    slug: 'dilator-vagina',
+    category: 'Efek samping',
+    aliases: ['dilator'],
+    definition:
+      'Alat berbentuk tabung untuk membantu menjaga kelenturan dan lebar vagina setelah radioterapi panggul, guna mencegah penyempitan.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
