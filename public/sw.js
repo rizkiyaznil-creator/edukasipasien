@@ -3,8 +3,10 @@
 //  - Navigasi halaman: utamakan jaringan, simpan ke cache, fallback ke cache/beranda saat offline.
 //  - Aset (css/js/gambar/font): tampilkan dari cache sambil memperbarui di latar (stale-while-revalidate).
 // Naikkan VERSION saat ada perubahan besar agar cache lama dibersihkan.
-const VERSION = 'sagita-v1';
-const CORE = ['/'];
+// BASE harus sama dengan `base` di astro.config.mjs (lihat scope SW di BaseLayout).
+const VERSION = 'sagita-v2';
+const BASE = '/edukasipasien/';
+const CORE = [BASE];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -44,7 +46,7 @@ self.addEventListener('fetch', (event) => {
           return res;
         })
         .catch(() =>
-          caches.match(req).then((cached) => cached || caches.match('/'))
+          caches.match(req).then((cached) => cached || caches.match(BASE))
         )
     );
     return;

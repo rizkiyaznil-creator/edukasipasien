@@ -1,17 +1,23 @@
 ---
+import { withBase } from '../lib/base';
+
 const links = [
   { href: '/', label: 'Beranda' },
   { href: '/kamus', label: 'Kamus' },
   { href: '/tentang', label: 'Tentang' },
 ];
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Buang base path dari pathname agar perbandingan menu aktif tetap benar
+// (mis. "/edukasipasien/kamus" -> "/kamus").
+const base = withBase('/').replace(/\/$/, '');
+const raw = Astro.url.pathname.replace(/\/$/, '') || '/';
+const path = base && raw.startsWith(base) ? raw.slice(base.length) || '/' : raw;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
 ---
 
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href="/" aria-label="SAGITA — beranda">
+    <a class="brand" href={withBase('/')} aria-label="SAGITA — beranda">
       <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
         <defs>
           <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
@@ -30,7 +36,7 @@ const isActive = (href: string) =>
     <nav class="nav" aria-label="Navigasi utama">
       {
         links.map((l) => (
-          <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>
+          <a href={withBase(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>
             {l.label}
           </a>
         ))

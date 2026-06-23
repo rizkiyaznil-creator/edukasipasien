@@ -3,6 +3,7 @@
 // Definisi diambil dari src/data/glossary.ts agar tidak ada duplikasi.
 // Cara pakai di dalam .mdx:  <Istilah id="histerektomi">histerektomi</Istilah>
 import { getEntryBySlug } from '../data/glossary';
+import { withBase } from '../lib/base';
 
 interface Props {
   id: string;
@@ -26,7 +27,7 @@ const popId = `tt-${id}-${Math.random().toString(36).slice(2, 7)}`;
       <span id={popId} popover="auto" class="istilah-pop" role="tooltip">
         <strong>{entry.term}</strong>
         {entry.definition}
-        <a href={`/kamus#${entry.slug}`}>Lihat di kamus →</a>
+        <a href={withBase(`/kamus#${entry.slug}`)}>Lihat di kamus →</a>
       </span>
     </span>
   ) : (

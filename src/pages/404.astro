@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/base';
 ---
 
 <BaseLayout title="Halaman tidak ditemukan">
@@ -10,7 +11,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Maaf, halaman yang Anda cari tidak ada atau sudah dipindahkan.
     </p>
     <p>
-      <a class="btn" href="/">Kembali ke beranda</a>
+      <a class="btn" href={withBase('/')}>Kembali ke beranda</a>
     </p>
   </div>
 </BaseLayout>

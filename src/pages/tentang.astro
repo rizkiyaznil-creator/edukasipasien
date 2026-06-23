@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Callout from '../components/Callout.astro';
 import Disclaimer from '../components/Disclaimer.astro';
+import { withBase } from '../lib/base';
 ---
 
 <BaseLayout
@@ -43,7 +44,7 @@ import Disclaimer from '../components/Disclaimer.astro';
       Kata medis yang <span class="istilah" style="cursor:default"
         >bergaris bawah titik-titik</span
       > dapat di-tap untuk melihat artinya. Semua istilah juga terkumpul di
-      <a href="/kamus">Kamus Istilah</a>.
+      <a href={withBase('/kamus')}>Kamus Istilah</a>.
     </li>
     <li>
       Tombol <strong>“Bagikan”</strong> menampilkan <strong>QR code</strong> —

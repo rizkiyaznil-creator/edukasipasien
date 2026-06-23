@@ -1,0 +1,43 @@
+name: Deploy ke GitHub Pages
+
+# Membangun situs Astro dan men-deploy ke GitHub Pages setiap ada push.
+# Sekali setup di repo: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+on:
+  push:
+    branches:
+      - claude/sharp-tesla-ovlkyn
+      - main
+  workflow_dispatch:
+
+# Hak akses yang dibutuhkan untuk men-deploy ke GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Jalankan satu deploy pada satu waktu; jangan batalkan deploy yang sedang berjalan.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install, build, dan upload artefak situs
+        uses: withastro/action@v3
+        # Aksi resmi Astro: deteksi package manager (npm ci via package-lock.json),
+        # jalankan `astro build`, lalu upload folder `dist/` sebagai artefak Pages.
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy ke GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

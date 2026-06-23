@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ShareQR from '../../components/ShareQR.astro';
 import Disclaimer from '../../components/Disclaimer.astro';
+import { withBase } from '../../lib/base';
 
 export async function getStaticPaths() {
   const topics = await getCollection('topics');
@@ -17,12 +18,12 @@ const { Content, headings } = await render(topic);
 
 const fmt = (d: Date) =>
   new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(d);
-const shareUrl = new URL(`/topik/${topic.id}`, Astro.site).href;
+const shareUrl = new URL(withBase(`/topik/${topic.id}`), Astro.site).href;
 const toc = headings.filter((h) => h.depth === 2);
 ---
 
 <BaseLayout title={topic.data.title} description={topic.data.summary}>
-  <a class="backlink" href="/">← Semua topik</a>
+  <a class="backlink" href={withBase('/')}>← Semua topik</a>
 
   <article class="article">
     <p class="eyebrow">{topic.data.category}</p>
@@ -74,5 +75,5 @@ const toc = headings.filter((h) => h.depth === 2);
     <Disclaimer />
   </article>
 
-  <a class="backlink" href="/">← Semua topik</a>
+  <a class="backlink" href={withBase('/')}>← Semua topik</a>
 </BaseLayout>

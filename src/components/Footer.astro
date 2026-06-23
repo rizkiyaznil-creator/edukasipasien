@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/base';
 const year = new Date().getFullYear();
 ---
 
@@ -7,8 +8,8 @@ const year = new Date().getFullYear();
     <h4>SAGITA</h4>
     <p>Sahabat Ginekologi Onkologi — edukasi pasien dengan bahasa yang mudah dipahami.</p>
     <p>
-      <a href="/">Beranda</a> · <a href="/kamus">Kamus Istilah</a> ·
-      <a href="/tentang">Tentang &amp; Disclaimer</a>
+      <a href={withBase('/')}>Beranda</a> · <a href={withBase('/kamus')}>Kamus Istilah</a> ·
+      <a href={withBase('/tentang')}>Tentang &amp; Disclaimer</a>
     </p>
     <p style="color:#8d99a6">
       Informasi di situs ini bersifat edukasi dan <strong>bukan pengganti</strong>
