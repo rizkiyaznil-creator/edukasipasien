@@ -738,6 +738,64 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Gangguan hormonal yang menyebabkan haid tidak teratur dan terbentuknya banyak folikel kecil pada ovarium.',
   },
+
+  // ——— Tindakan & Operasi ———
+  {
+    term: 'Laparotomi',
+    slug: 'laparotomi',
+    category: 'Pengobatan',
+    aliases: ['operasi terbuka', 'bedah terbuka'],
+    definition:
+      'Operasi membuka rongga perut melalui satu sayatan agar dokter dapat memeriksa dan menangani organ di dalamnya secara langsung.',
+  },
+  {
+    term: 'Anestesi Umum (Bius Total)',
+    slug: 'anestesi-umum',
+    category: 'Pengobatan',
+    aliases: ['bius total', 'anestesi', 'pembiusan'],
+    definition:
+      'Pembiusan yang membuat pasien tertidur dan tidak merasakan nyeri selama operasi berlangsung.',
+  },
+  {
+    term: 'Surgical Staging (Penentuan Stadium saat Operasi)',
+    slug: 'surgical-staging',
+    category: 'Pengobatan',
+    aliases: ['penentuan stadium operasi', 'staging operasi'],
+    definition:
+      'Rangkaian langkah selama operasi untuk menentukan seberapa jauh kanker menyebar (stadium), sehingga pengobatan lanjutan dapat direncanakan dengan tepat.',
+  },
+  {
+    term: 'Bilas Peritoneum (Sitologi)',
+    slug: 'bilas-peritoneum',
+    category: 'Pemeriksaan',
+    aliases: ['bilasan peritoneum', 'sitologi cairan', 'peritoneal washing'],
+    definition:
+      'Pengambilan cairan atau cucian dari rongga perut saat operasi untuk diperiksa apakah mengandung sel kanker.',
+  },
+  {
+    term: 'Potong Beku (Frozen Section)',
+    slug: 'potong-beku',
+    category: 'Pemeriksaan',
+    aliases: ['frozen section', 'vries coupe'],
+    definition:
+      'Pemeriksaan jaringan secara cepat saat operasi masih berlangsung, untuk membantu dokter mengambil keputusan tindakan saat itu juga.',
+  },
+  {
+    term: 'Pemeriksaan Patologi Anatomi (PA)',
+    slug: 'patologi-anatomi',
+    category: 'Pemeriksaan',
+    aliases: ['pa', 'histopatologi', 'patologi'],
+    definition:
+      'Pemeriksaan jaringan tubuh di bawah mikroskop oleh dokter spesialis untuk memastikan diagnosis. Hasilnya biasanya keluar dalam beberapa hari hingga dua minggu.',
+  },
+  {
+    term: 'Terapi Sulih Hormon (TSH / HRT)',
+    slug: 'terapi-sulih-hormon',
+    category: 'Pengobatan',
+    aliases: ['hrt', 'hormone replacement therapy', 'sulih hormon'],
+    definition:
+      'Pemberian hormon untuk meredakan gejala menopause (termasuk menopause akibat pengangkatan kedua ovarium). Tidak cocok untuk semua orang dan harus didiskusikan dengan dokter.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
