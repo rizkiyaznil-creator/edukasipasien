@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import Disclaimer from '../components/Disclaimer.astro';
+---
+
+<BaseLayout
+  title="Tentang SAGITA"
+  description="Tentang SAGITA: tujuan, cara penyusunan konten, dan cara memakai media edukasi pasien ginekologi onkologi."
+>
+  <h1>Tentang SAGITA</h1>
+  <p class="lead">
+    <strong>SAGITA</strong> (Sahabat Ginekologi Onkologi) adalah media edukasi
+    untuk membantu pasien dan keluarga memahami kanker pada organ reproduksi
+    perempuan — seperti kanker serviks, rahim, dan indung telur.
+  </p>
+
+  <h2>Untuk apa situs ini?</h2>
+  <p>
+    Banyak pasien merasa kewalahan dengan istilah medis dan informasi yang
+    simpang siur. SAGITA hadir untuk menyajikan informasi yang
+    <strong>tepercaya, ringkas, dan mudah dipahami</strong>, sehingga Anda lebih
+    siap saat berdiskusi dengan dokter dan lebih tenang menjalani pengobatan.
+  </p>
+
+  <h2>Bagaimana konten disusun?</h2>
+  <p>
+    Setiap topik melewati dua tahap: materi disusun sebagai draf, lalu
+    <strong>ditinjau dan divalidasi oleh dokter spesialis</strong> sebelum
+    dianggap final. Status setiap topik ditandai dengan label:
+  </p>
+  <p>
+    <span class="badge badge--draft">Draf · menunggu validasi</span> — materi
+    masih dalam peninjauan dokter. <br />
+    <span class="badge badge--ok" style="margin-top:.4rem">✓ Tervalidasi dokter</span>
+    — materi sudah ditinjau dan disetujui.
+  </p>
+
+  <h2>Cara memakai</h2>
+  <ul>
+    <li>Pilih topik di halaman depan, lalu baca bagian yang Anda butuhkan.</li>
+    <li>
+      Kata medis yang <span class="istilah" style="cursor:default"
+        >bergaris bawah titik-titik</span
+      > dapat di-tap untuk melihat artinya. Semua istilah juga terkumpul di
+      <a href="/kamus">Kamus Istilah</a>.
+    </li>
+    <li>
+      Tombol <strong>“Bagikan”</strong> menampilkan <strong>QR code</strong> —
+      dokter atau petugas bisa menunjukkannya agar pasien langsung membuka
+      halaman di ponselnya, atau membagikannya lewat WhatsApp.
+    </li>
+    <li>
+      Tombol <strong>“Cetak”</strong> mengubah halaman menjadi lembar edukasi
+      (handout) yang rapi untuk dibagikan.
+    </li>
+  </ul>
+
+  <Callout type="tip" title="Bisa dibuka tanpa internet">
+    <p>
+      SAGITA dapat dipasang di layar utama ponsel layaknya aplikasi. Halaman
+      yang sudah pernah dibuka tetap bisa dibaca meski sinyal sedang lemah.
+    </p>
+  </Callout>
+
+  <Disclaimer />
+
+  <h2>Masukan &amp; koreksi</h2>
+  <p>
+    Menemukan informasi yang kurang tepat atau punya usulan topik? Masukan dari
+    tenaga medis sangat kami hargai untuk menjaga akurasi materi. Silakan
+    sampaikan kepada pengelola SAGITA.
+  </p>
+</BaseLayout>

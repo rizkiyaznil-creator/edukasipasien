@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { glossary } from '../data/glossary';
+
+const sorted = [...glossary].sort((a, b) => a.term.localeCompare(b.term, 'id'));
+---
+
+<BaseLayout
+  title="Kamus Istilah"
+  description="Arti istilah medis ginekologi onkologi (kanker serviks, pemeriksaan, pengobatan) dengan bahasa sederhana."
+>
+  <h1>📖 Kamus Istilah</h1>
+  <p class="lead">
+    Arti istilah medis yang sering muncul saat berkonsultasi, dijelaskan dengan
+    bahasa sehari-hari.
+  </p>
+
+  <div class="search">
+    <span class="ic" aria-hidden="true">🔎</span>
+    <input
+      id="q"
+      type="search"
+      placeholder="Cari istilah… (mis. biopsi, HPV, stadium)"
+      autocomplete="off"
+      aria-label="Cari istilah"
+    />
+  </div>
+  <p id="count" class="muted" aria-live="polite"></p>
+
+  <dl class="glossary-list">
+    {
+      sorted.map((e) => (
+        <div
+          class="glossary-item"
+          id={e.slug}
+          data-term={`${e.term} ${(e.aliases ?? []).join(' ')} ${e.definition}`.toLowerCase()}
+        >
+          <dt>
+            {e.term}
+            {e.category && <span class="cat-tag">{e.category}</span>}
+          </dt>
+          <dd>{e.definition}</dd>
+        </div>
+      ))
+    }
+  </dl>
+  <p id="noresult" class="no-result" hidden>
+    Tidak ada istilah yang cocok. Coba kata kunci lain.
+  </p>
+
+  <style>
+    .glossary-item:target {
+      border-color: var(--c-primary);
+      box-shadow: 0 0 0 3px var(--c-primary-soft);
+    }
+  </style>
+
+  <script>
+    const q = document.getElementById('q') as HTMLInputElement;
+    const items = [
+      ...document.querySelectorAll<HTMLElement>('.glossary-item'),
+    ];
+    const count = document.getElementById('count')!;
+    const noresult = document.getElementById('noresult')!;
+
+    const update = () => {
+      const term = q.value.trim().toLowerCase();
+      let shown = 0;
+      for (const it of items) {
+        const match = !term || (it.dataset.term || '').includes(term);
+        it.hidden = !match;
+        if (match) shown++;
+      }
+      count.textContent = term
+        ? `${shown} hasil ditemukan`
+        : `${items.length} istilah`;
+      noresult.hidden = shown !== 0;
+    };
+
+    q.addEventListener('input', update);
+    update();
+
+    // Jika dibuka lewat tautan #anchor dari sebuah artikel, gulir ke istilahnya.
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) el.scrollIntoView({ block: 'center' });
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TopicCard from '../components/TopicCard.astro';
+import Disclaimer from '../components/Disclaimer.astro';
+import { getCollection } from 'astro:content';
+
+const topics = (await getCollection('topics', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(d);
+---
+
+<BaseLayout
+  title="SAGITA"
+  description="SAGITA (Sahabat Ginekologi Onkologi): edukasi pasien tentang kanker organ reproduksi perempuan dengan bahasa yang mudah dipahami."
+>
+  <section style="margin:1.4rem 0 0.5rem">
+    <p class="eyebrow">Edukasi Pasien Ginekologi Onkologi</p>
+    <h1>Memahami kanker perempuan dengan bahasa yang mudah</h1>
+    <p class="lead">
+      <strong>SAGITA</strong> — Sahabat Ginekologi Onkologi — membantu Anda dan
+      keluarga memahami penyakit, pemeriksaan, dan pengobatan kanker pada organ
+      reproduksi perempuan. Langkah demi langkah, tanpa istilah yang
+      membingungkan.
+    </p>
+  </section>
+
+  <h2>Topik kesehatan</h2>
+  <div class="cards">
+    {
+      topics.map((t) => (
+        <TopicCard
+          href={`/topik/${t.id}`}
+          icon={t.data.icon}
+          title={t.data.title}
+          summary={t.data.summary}
+          validated={t.data.validated}
+          meta={`Diperbarui ${fmt(t.data.updatedDate)}`}
+        />
+      ))
+    }
+    <TopicCard
+      icon="🌸"
+      title="Kanker Ovarium (Indung Telur)"
+      summary="Sedang disiapkan — penjelasan lengkap tentang kanker indung telur, mulai dari gejala hingga pengobatan."
+      soon
+    />
+  </div>
+
+  <h2>Jelajahi lainnya</h2>
+  <div class="cards">
+    <TopicCard
+      href="/kamus"
+      icon="📖"
+      title="Kamus Istilah"
+      summary="Arti istilah medis yang sering Anda dengar, dijelaskan dengan bahasa sehari-hari. Bisa dicari."
+      noBadge
+    />
+    <TopicCard
+      href="/tentang"
+      icon="🩺"
+      title="Tentang SAGITA"
+      summary="Tujuan situs, cara memakainya, dan catatan penting sebelum membaca."
+      noBadge
+    />
+  </div>
+
+  <Disclaimer />
+</BaseLayout>

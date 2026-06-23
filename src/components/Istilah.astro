@@ -1,0 +1,35 @@
+---
+// Istilah medis yang bisa di-tap untuk memunculkan artinya (popover).
+// Definisi diambil dari src/data/glossary.ts agar tidak ada duplikasi.
+// Cara pakai di dalam .mdx:  <Istilah id="histerektomi">histerektomi</Istilah>
+import { getEntryBySlug } from '../data/glossary';
+
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const entry = getEntryBySlug(id);
+const popId = `tt-${id}-${Math.random().toString(36).slice(2, 7)}`;
+---
+
+{
+  entry ? (
+    <span class="istilah-wrap">
+      <button
+        type="button"
+        class="istilah"
+        popovertarget={popId}
+        aria-label={`Arti istilah: ${entry.term}`}
+      >
+        <slot />
+      </button>
+      <span id={popId} popover="auto" class="istilah-pop" role="tooltip">
+        <strong>{entry.term}</strong>
+        {entry.definition}
+        <a href={`/kamus#${entry.slug}`}>Lihat di kamus →</a>
+      </span>
+    </span>
+  ) : (
+    <slot />
+  )
+}

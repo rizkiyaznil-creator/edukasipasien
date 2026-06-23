@@ -1,0 +1,64 @@
+---
+// Kotak "Bagikan": QR code dibuat saat build (tanpa beban JS untuk gambar),
+// plus tombol bagikan/salin tautan dan cetak.
+import QRCode from 'qrcode';
+
+interface Props {
+  url: string;
+}
+const { url } = Astro.props;
+
+const qrSvg = await QRCode.toString(url, {
+  type: 'svg',
+  margin: 1,
+  errorCorrectionLevel: 'M',
+  color: { dark: '#14202b', light: '#ffffff' },
+});
+---
+
+<div class="share">
+  <details>
+    <summary>📤 Bagikan halaman ini (QR / tautan)</summary>
+    <div class="share-body">
+      <p class="muted" style="margin:.2rem 0 .4rem;font-size:.9rem">
+        Arahkan kamera ponsel ke QR untuk membuka halaman ini.
+      </p>
+      <div class="qr" set:html={qrSvg} aria-hidden="true"></div>
+      <p class="share-url">{url}</p>
+      <div class="share-actions">
+        <button type="button" class="btn btn--ghost js-share" data-url={url}>
+          🔗 Bagikan / salin tautan
+        </button>
+        <button type="button" class="btn btn--ghost js-print">🖨️ Cetak</button>
+      </div>
+    </div>
+  </details>
+</div>
+
+<script>
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('.js-share')) {
+    btn.addEventListener('click', async () => {
+      const url = btn.getAttribute('data-url') || location.href;
+      // Di HP: buka share sheet (mis. ke WhatsApp). Jika tidak ada, salin.
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: document.title, url });
+          return;
+        } catch {
+          /* dibatalkan pengguna */
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        const original = btn.textContent;
+        btn.textContent = '✓ Tersalin';
+        setTimeout(() => (btn.textContent = original), 1600);
+      } catch {
+        /* abaikan */
+      }
+    });
+  }
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('.js-print')) {
+    btn.addEventListener('click', () => window.print());
+  }
+</script>

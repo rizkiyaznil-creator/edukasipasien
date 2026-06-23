@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ShareQR from '../../components/ShareQR.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+
+export async function getStaticPaths() {
+  const topics = await getCollection('topics');
+  return topics.map((topic) => ({
+    params: { slug: topic.id },
+    props: { topic },
+  }));
+}
+
+const { topic } = Astro.props;
+const { Content, headings } = await render(topic);
+
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(d);
+const shareUrl = new URL(`/topik/${topic.id}`, Astro.site).href;
+const toc = headings.filter((h) => h.depth === 2);
+---
+
+<BaseLayout title={topic.data.title} description={topic.data.summary}>
+  <a class="backlink" href="/">← Semua topik</a>
+
+  <article class="article">
+    <p class="eyebrow">{topic.data.category}</p>
+    <h1>{topic.data.title}</h1>
+    <p class="lead">{topic.data.summary}</p>
+
+    {
+      topic.data.validated ? (
+        <div class="review-banner done">
+          <span aria-hidden="true">✓</span>
+          <div>
+            Konten ini telah <strong>divalidasi</strong>
+            {topic.data.reviewer ? ` oleh ${topic.data.reviewer}` : ''}.
+            Diperbarui {fmt(topic.data.updatedDate)}.
+          </div>
+        </div>
+      ) : (
+        <div class="review-banner pending">
+          <span aria-hidden="true">📝</span>
+          <div>
+            <strong>Draf — menunggu validasi dokter.</strong> Materi ini disusun
+            untuk tujuan edukasi dan masih dalam proses peninjauan oleh dokter
+            spesialis. Diperbarui {fmt(topic.data.updatedDate)}.
+          </div>
+        </div>
+      )
+    }
+
+    <ShareQR url={shareUrl} />
+
+    {
+      toc.length > 0 && (
+        <nav class="toc" aria-label="Daftar isi">
+          <strong>Daftar isi</strong>
+          <ol>
+            {toc.map((h) => (
+              <li>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )
+    }
+
+    <Content />
+
+    <hr />
+    <Disclaimer />
+  </article>
+
+  <a class="backlink" href="/">← Semua topik</a>
+</BaseLayout>

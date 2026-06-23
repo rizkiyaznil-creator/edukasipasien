@@ -1,0 +1,45 @@
+---
+interface Props {
+  href?: string;
+  icon?: string;
+  title: string;
+  summary: string;
+  meta?: string;
+  soon?: boolean;
+  validated?: boolean;
+  noBadge?: boolean;
+}
+const {
+  href,
+  icon = '🎗️',
+  title,
+  summary,
+  meta,
+  soon = false,
+  validated = false,
+  noBadge = false,
+} = Astro.props;
+const Tag = href ? 'a' : 'div';
+const showMeta = !noBadge || !!meta;
+---
+
+<Tag class:list={['card', { soon }]} {...href ? { href } : {}}>
+  <span class="ic" aria-hidden="true">{icon}</span>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  {
+    showMeta && (
+      <span class="meta">
+        {!noBadge &&
+          (soon ? (
+            <span class="badge badge--soon">Segera hadir</span>
+          ) : validated ? (
+            <span class="badge badge--ok">✓ Tervalidasi dokter</span>
+          ) : (
+            <span class="badge badge--draft">Draf · menunggu validasi</span>
+          ))}
+        {meta && <span>{!noBadge ? ' · ' : ''}{meta}</span>}
+      </span>
+    )
+  }
+</Tag>
