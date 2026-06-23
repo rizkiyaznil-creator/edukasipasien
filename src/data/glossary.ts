@@ -672,6 +672,72 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Kesulitan memperoleh kehamilan setelah berhubungan secara teratur tanpa kontrasepsi selama sekitar satu tahun.',
   },
+
+  // ——— Kanker Rahim, Kista Ovarium & Dermoid ———
+  {
+    term: 'Hiperplasia Endometrium',
+    slug: 'hiperplasia-endometrium',
+    category: 'Umum',
+    aliases: ['penebalan endometrium'],
+    definition:
+      'Penebalan berlebihan pada lapisan dalam rahim (endometrium). Sebagian jenisnya merupakan tahap prakanker yang dapat mendahului kanker rahim.',
+  },
+  {
+    term: 'Kuretase (Dilatasi & Kuretase / D&C)',
+    slug: 'kuretase',
+    category: 'Pemeriksaan',
+    aliases: ['d&c', 'dilatasi dan kuretase', 'kuret'],
+    definition:
+      'Tindakan mengambil jaringan dari rongga rahim untuk diperiksa di laboratorium atau untuk mengatasi perdarahan. Sering dilakukan bersama histeroskopi.',
+  },
+  {
+    term: 'Terapi Hormonal',
+    slug: 'terapi-hormonal',
+    category: 'Pengobatan',
+    aliases: ['hormonal', 'progestin', 'terapi hormon'],
+    definition:
+      'Pengobatan menggunakan hormon (misalnya progestin) untuk menghambat pertumbuhan sel yang dipengaruhi hormon; dipakai pada kasus tertentu kanker rahim.',
+  },
+  {
+    term: 'Kistektomi',
+    slug: 'kistektomi',
+    category: 'Pengobatan',
+    aliases: ['ovarian cystectomy', 'pengangkatan kista'],
+    definition:
+      'Operasi mengangkat kista dari ovarium sambil mempertahankan jaringan ovarium yang sehat, sehingga kesuburan dapat terjaga.',
+  },
+  {
+    term: 'Kista Dermoid (Teratoma Matur)',
+    slug: 'kista-dermoid',
+    category: 'Umum',
+    aliases: ['teratoma', 'teratoma matur', 'teratoma kistik matur', 'dermoid'],
+    definition:
+      'Jenis kista ovarium jinak yang berasal dari sel benih dan dapat berisi berbagai jaringan tubuh seperti rambut, lemak, kulit, kadang gigi.',
+  },
+  {
+    term: 'Torsio Ovarium (Ovarium Terpuntir)',
+    slug: 'torsio-ovarium',
+    category: 'Umum',
+    aliases: ['torsio', 'ovarium terpuntir', 'terpuntir'],
+    definition:
+      'Keadaan ketika ovarium (sering karena ada kista) terpuntir pada tangkainya sehingga aliran darahnya terhenti. Menimbulkan nyeri hebat mendadak dan merupakan keadaan gawat darurat.',
+  },
+  {
+    term: 'Kista Fungsional',
+    slug: 'kista-fungsional',
+    category: 'Umum',
+    aliases: ['kista folikel', 'kista korpus luteum'],
+    definition:
+      'Kista ovarium yang paling umum, terbentuk sebagai bagian normal dari siklus haid dan biasanya hilang dengan sendirinya.',
+  },
+  {
+    term: 'PCOS (Sindrom Ovarium Polikistik)',
+    slug: 'pcos',
+    category: 'Umum',
+    aliases: ['sindrom ovarium polikistik', 'polycystic ovary syndrome'],
+    definition:
+      'Gangguan hormonal yang menyebabkan haid tidak teratur dan terbentuknya banyak folikel kecil pada ovarium.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
