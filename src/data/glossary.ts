@@ -796,6 +796,40 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Pemberian hormon untuk meredakan gejala menopause (termasuk menopause akibat pengangkatan kedua ovarium). Tidak cocok untuk semua orang dan harus didiskusikan dengan dokter.',
   },
+
+  // ——— PCOS ———
+  {
+    term: 'Resistensi Insulin',
+    slug: 'resistensi-insulin',
+    category: 'Umum',
+    aliases: ['kebal insulin'],
+    definition:
+      'Keadaan ketika tubuh kurang peka terhadap insulin sehingga kadar gula dan insulin cenderung tinggi. Sering berkaitan dengan PCOS dan meningkatkan risiko diabetes.',
+  },
+  {
+    term: 'Hiperandrogenisme',
+    slug: 'hiperandrogenisme',
+    category: 'Umum',
+    aliases: ['kelebihan androgen', 'hormon androgen berlebih'],
+    definition:
+      'Kelebihan hormon androgen (hormon yang lebih dominan pada laki-laki) pada perempuan, yang dapat menimbulkan jerawat, kulit berminyak, dan tumbuh rambut berlebih.',
+  },
+  {
+    term: 'Anovulasi',
+    slug: 'anovulasi',
+    category: 'Umum',
+    aliases: ['tidak berovulasi', 'gangguan ovulasi'],
+    definition:
+      'Keadaan ketika ovarium tidak melepaskan sel telur seperti seharusnya, sehingga haid menjadi tidak teratur dan kehamilan sulit terjadi.',
+  },
+  {
+    term: 'Hirsutisme',
+    slug: 'hirsutisme',
+    category: 'Umum',
+    aliases: ['rambut berlebih'],
+    definition:
+      'Tumbuhnya rambut berlebih pada perempuan di area yang biasanya lebih khas pada laki-laki (misalnya wajah atau dada), sering akibat kelebihan hormon androgen.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
