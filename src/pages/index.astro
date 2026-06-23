@@ -12,7 +12,11 @@ const fmt = (d: Date) =>
   new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(d);
 
 // Kelompokkan topik per kategori (urutan kategori ditentukan di bawah).
-const CATEGORY_ORDER = ['Kanker Ginekologi', 'Pengobatan & Prosedur'];
+const CATEGORY_ORDER = [
+  'Kanker Ginekologi',
+  'Ginekologi Umum',
+  'Pengobatan & Prosedur',
+];
 const byCategory = (cat: string) =>
   topics.filter((t) => t.data.category === cat);
 const extraCats = [...new Set(topics.map((t) => t.data.category))].filter(

@@ -568,6 +568,110 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Alat berbentuk tabung untuk membantu menjaga kelenturan dan lebar vagina setelah radioterapi panggul, guna mencegah penyempitan.',
   },
+
+  // ——— Mioma & Endometriosis ———
+  {
+    term: 'Mioma Uteri (Miom)',
+    slug: 'mioma',
+    category: 'Umum',
+    aliases: ['miom', 'fibroid', 'leiomioma', 'myoma'],
+    definition:
+      'Tumor jinak yang tumbuh dari otot dinding rahim. Sangat umum, bukan kanker, dan sangat jarang berubah menjadi ganas.',
+  },
+  {
+    term: 'Miomektomi',
+    slug: 'miomektomi',
+    category: 'Pengobatan',
+    aliases: ['myomectomy', 'pengangkatan miom'],
+    definition:
+      'Operasi mengangkat mioma tetapi tetap mempertahankan rahim, sehingga masih memungkinkan kehamilan.',
+  },
+  {
+    term: 'Embolisasi Arteri Uterina (UAE)',
+    slug: 'embolisasi-arteri-uterina',
+    category: 'Pengobatan',
+    aliases: ['uae', 'embolisasi miom', 'ufe'],
+    definition:
+      'Tindakan menyumbat pembuluh darah yang memberi makan mioma sehingga mioma mengecil, tanpa operasi besar dan tetap mempertahankan rahim.',
+  },
+  {
+    term: 'Histeroskopi',
+    slug: 'histeroskopi',
+    category: 'Pemeriksaan',
+    aliases: ['hysteroscopy'],
+    definition:
+      'Pemeriksaan melihat bagian dalam rongga rahim memakai teropong tipis yang dimasukkan lewat vagina dan serviks. Bisa juga dipakai untuk mengangkat mioma submukosa.',
+  },
+  {
+    term: 'Laparoskopi',
+    slug: 'laparoskopi',
+    category: 'Pemeriksaan',
+    aliases: ['laparoscopy', 'operasi lubang kunci', 'bedah minimal invasif'],
+    definition:
+      'Operasi melalui beberapa sayatan kecil di perut dengan bantuan kamera. Pada endometriosis menjadi cara paling pasti untuk melihat sekaligus mengangkat jaringan.',
+  },
+  {
+    term: 'Endometriosis',
+    slug: 'endometriosis',
+    category: 'Umum',
+    definition:
+      'Kondisi ketika jaringan mirip lapisan dalam rahim (endometrium) tumbuh di luar rahim, menimbulkan peradangan, nyeri, dan kadang gangguan kesuburan.',
+  },
+  {
+    term: 'Endometrioma (Kista Cokelat)',
+    slug: 'endometrioma',
+    category: 'Umum',
+    aliases: ['kista cokelat', 'kista coklat', 'chocolate cyst'],
+    definition:
+      'Kista pada ovarium berisi darah lama berwarna cokelat akibat endometriosis.',
+  },
+  {
+    term: 'Adenomiosis',
+    slug: 'adenomiosis',
+    category: 'Umum',
+    aliases: ['adenomyosis'],
+    definition:
+      'Kondisi ketika jaringan mirip endometrium tumbuh ke dalam dinding otot rahim, menyebabkan haid nyeri dan banyak serta rahim membesar.',
+  },
+  {
+    term: 'Dismenore (Nyeri Haid)',
+    slug: 'dismenore',
+    category: 'Umum',
+    aliases: ['nyeri haid', 'kram haid', 'dysmenorrhea'],
+    definition:
+      'Nyeri atau kram di perut bawah saat menstruasi. Nyeri yang sangat berat hingga mengganggu aktivitas tidak boleh dianggap wajar.',
+  },
+  {
+    term: 'Dispareunia',
+    slug: 'dispareunia',
+    category: 'Umum',
+    aliases: ['nyeri saat berhubungan', 'dyspareunia'],
+    definition: 'Nyeri yang dirasakan saat berhubungan seksual.',
+  },
+  {
+    term: 'Perdarahan Menstruasi Berat',
+    slug: 'perdarahan-menstruasi-berat',
+    category: 'Umum',
+    aliases: ['menoragia', 'haid banyak', 'perdarahan haid berlebih'],
+    definition:
+      'Darah haid yang sangat banyak atau berlangsung lama (misalnya harus berganti pembalut tiap 1–2 jam atau keluar gumpalan besar), dan dapat menyebabkan kurang darah (anemia).',
+  },
+  {
+    term: 'Analog GnRH',
+    slug: 'analog-gnrh',
+    category: 'Pengobatan',
+    aliases: ['gnrh agonis', 'agonis gnrh', 'gnrh'],
+    definition:
+      'Obat hormonal yang untuk sementara menghentikan haid dan menurunkan kadar estrogen. Dipakai untuk mengecilkan mioma atau meredakan endometriosis; efeknya mirip menopause sementara.',
+  },
+  {
+    term: 'Infertilitas (Sulit Hamil)',
+    slug: 'infertilitas',
+    category: 'Umum',
+    aliases: ['sulit hamil', 'kemandulan', 'infertility'],
+    definition:
+      'Kesulitan memperoleh kehamilan setelah berhubungan secara teratur tanpa kontrasepsi selama sekitar satu tahun.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
