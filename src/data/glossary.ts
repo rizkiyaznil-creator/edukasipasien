@@ -338,6 +338,124 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Berhentinya menstruasi lebih cepat dari biasanya, bisa terjadi akibat operasi pengangkatan ovarium atau radiasi.',
   },
+
+  // ——— Tambahan untuk Kanker Ovarium ———
+  {
+    term: 'Tuba Falopi (Saluran Telur)',
+    slug: 'tuba-falopi',
+    category: 'Anatomi',
+    aliases: ['saluran telur', 'tuba'],
+    definition:
+      'Sepasang saluran yang menghubungkan ovarium dengan rahim. Banyak kanker ovarium tipe tersering kini diduga bermula di sini.',
+  },
+  {
+    term: 'Peritoneum',
+    slug: 'peritoneum',
+    category: 'Anatomi',
+    definition:
+      'Selaput tipis yang melapisi rongga perut dan menyelimuti organ-organ di dalamnya.',
+  },
+  {
+    term: 'BRCA1 / BRCA2',
+    slug: 'brca',
+    category: 'Penyebab',
+    aliases: ['brca', 'gen brca'],
+    definition:
+      'Gen yang bila mengalami mutasi dapat meningkatkan risiko kanker ovarium dan payudara. Mutasinya bisa diturunkan dalam keluarga.',
+  },
+  {
+    term: 'CA-125',
+    slug: 'ca-125',
+    category: 'Pemeriksaan',
+    aliases: ['ca125'],
+    definition:
+      'Salah satu petanda tumor dalam darah yang kadarnya dapat meningkat pada kanker ovarium. Berguna terutama untuk pemantauan, bukan untuk memastikan diagnosis.',
+  },
+  {
+    term: 'Petanda Tumor',
+    slug: 'petanda-tumor',
+    category: 'Pemeriksaan',
+    aliases: ['tumor marker', 'penanda tumor'],
+    definition:
+      'Zat (sering berupa protein) dalam darah yang kadarnya bisa meningkat pada kanker tertentu, dipakai untuk membantu pemantauan penyakit.',
+  },
+  {
+    term: 'USG Transvaginal',
+    slug: 'usg-transvaginal',
+    category: 'Pemeriksaan',
+    aliases: ['ultrasonografi transvaginal'],
+    definition:
+      'Pemeriksaan ultrasonografi melalui vagina untuk melihat ovarium dan rahim dengan lebih jelas.',
+  },
+  {
+    term: 'Konseling Genetik',
+    slug: 'konseling-genetik',
+    category: 'Pencegahan',
+    definition:
+      'Konsultasi untuk menilai risiko kanker yang diturunkan dalam keluarga, termasuk kemungkinan tes gen seperti BRCA.',
+  },
+  {
+    term: 'Operasi Sitoreduksi (Debulking)',
+    slug: 'sitoreduksi',
+    category: 'Pengobatan',
+    aliases: ['debulking', 'sitoreduktif'],
+    definition:
+      'Operasi mengangkat sebanyak mungkin jaringan kanker di rongga perut. Hasil terbaik bila tidak ada sisa tumor yang masih terlihat.',
+  },
+  {
+    term: 'Salpingo-ooforektomi',
+    slug: 'salpingo-ooforektomi',
+    category: 'Pengobatan',
+    aliases: ['ooforektomi'],
+    definition:
+      'Operasi pengangkatan ovarium beserta tuba falopi. Bila dilakukan pada kedua sisi disebut bilateral.',
+  },
+  {
+    term: 'Omentektomi',
+    slug: 'omentektomi',
+    category: 'Pengobatan',
+    aliases: ['omentum'],
+    definition:
+      'Pengangkatan omentum — lapisan lemak yang menggantung di rongga perut dan sering menjadi tempat penyebaran kanker ovarium.',
+  },
+  {
+    term: 'Terapi Neoadjuvan',
+    slug: 'neoadjuvan',
+    category: 'Pengobatan',
+    definition:
+      'Pengobatan (misalnya kemoterapi) yang diberikan lebih dulu sebelum operasi untuk mengecilkan tumor.',
+  },
+  {
+    term: 'Terapi Rumatan (Maintenance)',
+    slug: 'terapi-rumatan',
+    category: 'Pengobatan',
+    aliases: ['maintenance', 'terapi pemeliharaan'],
+    definition:
+      'Pengobatan lanjutan setelah kemoterapi utama untuk menjaga agar kanker tidak cepat kembali.',
+  },
+  {
+    term: 'Penghambat PARP (PARP Inhibitor)',
+    slug: 'parp-inhibitor',
+    category: 'Pengobatan',
+    aliases: ['parp', 'penghambat parp'],
+    definition:
+      'Obat terapi target yang sering dipakai sebagai terapi rumatan kanker ovarium, terutama pada pasien dengan mutasi BRCA.',
+  },
+  {
+    term: 'Kista Ovarium',
+    slug: 'kista-ovarium',
+    category: 'Umum',
+    aliases: ['kista'],
+    definition:
+      'Kantong berisi cairan yang terbentuk pada ovarium. Sebagian besar bersifat jinak dan bukan kanker.',
+  },
+  {
+    term: 'Asites',
+    slug: 'asites',
+    category: 'Umum',
+    definition:
+      'Penumpukan cairan di dalam rongga perut yang membuat perut tampak membesar; dapat terjadi pada kanker ovarium stadium lanjut.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
