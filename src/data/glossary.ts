@@ -731,12 +731,12 @@ export const glossary: GlossaryEntry[] = [
       'Kista ovarium yang paling umum, terbentuk sebagai bagian normal dari siklus haid dan biasanya hilang dengan sendirinya.',
   },
   {
-    term: 'PCOS (Sindrom Ovarium Polikistik)',
+    term: 'PMOS (Polyendocrine Metabolic Ovarian Syndrome)',
     slug: 'pcos',
     category: 'Umum',
-    aliases: ['sindrom ovarium polikistik', 'polycystic ovary syndrome'],
+    aliases: ['pcos', 'sindrom ovarium polikistik', 'sopk', 'polycystic ovary syndrome', 'poliendokrin metabolik ovarium'],
     definition:
-      'Gangguan hormonal yang menyebabkan haid tidak teratur dan terbentuknya banyak folikel kecil pada ovarium.',
+      'Gangguan hormon dan metabolik yang menyebabkan haid tidak teratur, tanda kelebihan androgen, dan gambaran ovarium polikistik. Sejak 2026, melalui konsensus global, namanya resmi diganti dari PCOS menjadi PMOS karena dinilai lebih akurat.',
   },
 
   // ——— Tindakan & Operasi ———
@@ -804,7 +804,7 @@ export const glossary: GlossaryEntry[] = [
     category: 'Umum',
     aliases: ['kebal insulin'],
     definition:
-      'Keadaan ketika tubuh kurang peka terhadap insulin sehingga kadar gula dan insulin cenderung tinggi. Sering berkaitan dengan PCOS dan meningkatkan risiko diabetes.',
+      'Keadaan ketika tubuh kurang peka terhadap insulin sehingga kadar gula dan insulin cenderung tinggi. Sering berkaitan dengan PMOS (dulu PCOS) dan meningkatkan risiko diabetes.',
   },
   {
     term: 'Hiperandrogenisme',
