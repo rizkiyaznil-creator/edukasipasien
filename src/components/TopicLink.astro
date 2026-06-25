@@ -1,0 +1,12 @@
+---
+// Tautan internal ke halaman topik yang sadar base path (untuk dipakai di MDX).
+// Pemakaian: <TopicLink to="gizi-selama-pengobatan">teks tautan</TopicLink>
+import { withBase } from '../lib/base';
+
+interface Props {
+  to: string;
+}
+const { to } = Astro.props;
+---
+
+<a href={withBase(`/topik/${to}`)}><slot /></a>
