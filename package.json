@@ -1,8 +1,8 @@
 {
-  "name": "sagita",
+  "name": "temant",
   "type": "module",
   "version": "0.1.0",
-  "description": "SAGITA — Sahabat Ginekologi Onkologi: edukasi pasien yang mudah dipahami",
+  "description": "Temant — Sahabat Ginekologi Onkologi: edukasi pasien yang mudah dipahami",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

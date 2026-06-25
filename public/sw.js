@@ -1,10 +1,10 @@
-// Service worker sederhana untuk SAGITA.
+// Service worker sederhana untuk Temant.
 // Strategi:
 //  - Navigasi halaman: utamakan jaringan, simpan ke cache, fallback ke cache/beranda saat offline.
 //  - Aset (css/js/gambar/font): tampilkan dari cache sambil memperbarui di latar (stale-while-revalidate).
 // Naikkan VERSION saat ada perubahan besar agar cache lama dibersihkan.
 // BASE harus sama dengan `base` di astro.config.mjs (lihat scope SW di BaseLayout).
-const VERSION = 'sagita-v2';
+const VERSION = 'temant-v1';
 const BASE = '/edukasipasien/';
 const CORE = [BASE];
 

@@ -12,7 +12,7 @@ const {
   title,
   description = 'Edukasi pasien ginekologi onkologi dengan bahasa yang mudah dipahami.',
 } = Astro.props;
-const fullTitle = title === 'SAGITA' ? title : `${title} — SAGITA`;
+const fullTitle = title === 'Temant' ? title : `${title} — Temant`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -29,7 +29,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#0d7a6f" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="SAGITA" />
+    <meta name="apple-mobile-web-app-title" content="Temant" />
     <link rel="apple-touch-icon" href={withBase('/icons/icon-192.png')} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />

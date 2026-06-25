@@ -1,4 +1,4 @@
-// Membuat ikon PWA (PNG) dari logo pita SAGITA.
+// Membuat ikon PWA (PNG) dari logo pita Temant.
 // Memakai `sharp` yang sudah menjadi dependensi Astro.
 // Jalankan: npm run gen:icons
 import sharp from 'sharp';
