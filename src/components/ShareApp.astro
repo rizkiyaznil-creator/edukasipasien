@@ -1,0 +1,82 @@
+---
+// Kotak "Bagikan aplikasi" untuk halaman Tentang.
+// QR dibuat saat build dari URL beranda aplikasi; tombol memakai Web Share API
+// (mis. membagikan ke WhatsApp) dengan fallback menyalin tautan.
+import QRCode from 'qrcode';
+import { withBase } from '../lib/base';
+
+const appUrl = new URL(withBase('/'), Astro.site).href;
+const qrSvg = await QRCode.toString(appUrl, {
+  type: 'svg',
+  margin: 1,
+  errorCorrectionLevel: 'M',
+  color: { dark: '#14202b', light: '#ffffff' },
+});
+---
+
+<section class="share share--app" aria-label="Bagikan aplikasi">
+  <h2>Bagikan aplikasi</h2>
+  <p class="share-app-desc">
+    Bantu lebih banyak orang memahami kesehatan reproduksi perempuan. Bagikan
+    Temant lewat WhatsApp atau media lain, atau tunjukkan QR berikut untuk
+    dipindai.
+  </p>
+  <div class="share-body">
+    <div class="qr" set:html={qrSvg} aria-hidden="true"></div>
+    <p class="share-url">{appUrl}</p>
+    <div class="share-actions">
+      <button type="button" class="btn js-share-app" data-url={appUrl}>
+        📤 Bagikan aplikasi
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .share--app {
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface);
+    padding: 1rem 1.1rem 1.2rem;
+    margin: 1.6rem 0;
+    text-align: center;
+  }
+  .share--app h2 {
+    margin: 0.1rem 0 0.3rem;
+  }
+  .share-app-desc {
+    margin: 0 0 0.5rem;
+    color: var(--c-text-muted);
+    font-size: 0.95rem;
+  }
+</style>
+
+<script>
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('.js-share-app')) {
+    btn.addEventListener('click', async () => {
+      const url = btn.getAttribute('data-url') || location.href;
+      const shareData = {
+        title: 'Temant — Sahabat Ginekologi Onkologi',
+        text: 'Edukasi pasien ginekologi onkologi dengan bahasa yang mudah dipahami.',
+        url,
+      };
+      // Di HP: buka share sheet (mis. ke WhatsApp). Jika tidak tersedia, salin tautan.
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch {
+          /* dibatalkan pengguna */
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        const original = btn.textContent;
+        btn.textContent = '✓ Tautan tersalin';
+        setTimeout(() => (btn.textContent = original), 1600);
+      } catch {
+        /* abaikan */
+      }
+    });
+  }
+</script>
