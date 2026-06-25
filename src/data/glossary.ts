@@ -830,6 +830,32 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Tumbuhnya rambut berlebih pada perempuan di area yang biasanya lebih khas pada laki-laki (misalnya wajah atau dada), sering akibat kelebihan hormon androgen.',
   },
+
+  // ——— Gizi & Pengobatan ———
+  {
+    term: 'Malnutrisi (Kurang Gizi)',
+    slug: 'malnutrisi',
+    category: 'Efek samping',
+    aliases: ['kurang gizi', 'gizi buruk'],
+    definition:
+      'Keadaan tubuh kekurangan energi atau zat gizi. Selama pengobatan kanker, malnutrisi dapat melemahkan daya tahan dan memperlambat pemulihan.',
+  },
+  {
+    term: 'Dehidrasi',
+    slug: 'dehidrasi',
+    category: 'Efek samping',
+    aliases: ['kurang cairan', 'kekurangan cairan'],
+    definition:
+      'Kekurangan cairan tubuh. Tandanya antara lain rasa haus, jarang buang air kecil, urin pekat, lemas, dan pusing. Dapat terjadi akibat muntah atau diare selama pengobatan.',
+  },
+  {
+    term: 'Ahli Gizi (Dietisien)',
+    slug: 'ahli-gizi',
+    category: 'Umum',
+    aliases: ['dietisien', 'nutrisionis', 'ahli diet'],
+    definition:
+      'Tenaga kesehatan yang membantu menyusun pola makan yang sesuai dengan kondisi dan pengobatan pasien.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
