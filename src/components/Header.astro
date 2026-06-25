@@ -1,5 +1,6 @@
 ---
 import { withBase } from '../lib/base';
+import TopicSearch from './TopicSearch.astro';
 
 const links = [
   { href: '/', label: 'Beranda' },
@@ -43,4 +44,13 @@ const isActive = (href: string) =>
       }
     </nav>
   </div>
+  <div class="container header-search">
+    <TopicSearch />
+  </div>
 </header>
+
+<style>
+  .header-search {
+    padding-bottom: 0.6rem;
+  }
+</style>
