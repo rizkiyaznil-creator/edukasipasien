@@ -856,6 +856,40 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Tenaga kesehatan yang membantu menyusun pola makan yang sesuai dengan kondisi dan pengobatan pasien.',
   },
+
+  // ——— Konisasi & Kolitis Radiasi ———
+  {
+    term: 'Tepi Sayatan (Margin)',
+    slug: 'margin-sayatan',
+    category: 'Pemeriksaan',
+    aliases: ['margin', 'tepi reseksi', 'batas sayatan'],
+    definition:
+      'Batas tepi jaringan yang diangkat saat operasi. Disebut "bebas" bila tidak ditemukan sel abnormal di tepinya, yang berarti lesi kemungkinan terangkat tuntas.',
+  },
+  {
+    term: 'Serviks Inkompeten',
+    slug: 'serviks-inkompeten',
+    category: 'Umum',
+    aliases: ['serviks lemah', 'inkompetensia serviks'],
+    definition:
+      'Keadaan leher rahim melemah atau memendek sehingga berisiko membuka terlalu dini saat hamil. Risikonya sedikit meningkat setelah konisasi yang luas atau berulang.',
+  },
+  {
+    term: 'Kolitis / Proktitis Radiasi',
+    slug: 'kolitis-radiasi',
+    category: 'Efek samping',
+    aliases: ['proktitis radiasi', 'enteritis radiasi', 'radiasi usus'],
+    definition:
+      'Peradangan usus besar (kolitis) atau rektum (proktitis) akibat radioterapi panggul. Dapat bersifat akut (selama/segera setelah terapi) atau kronik (muncul bulan hingga tahun kemudian).',
+  },
+  {
+    term: 'Kolonoskopi / Sigmoidoskopi',
+    slug: 'kolonoskopi',
+    category: 'Pemeriksaan',
+    aliases: ['kolonoskopi', 'sigmoidoskopi', 'teropong usus'],
+    definition:
+      'Pemeriksaan melihat bagian dalam usus besar atau rektum menggunakan selang berkamera, kadang sekaligus mengambil contoh jaringan (biopsi).',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
