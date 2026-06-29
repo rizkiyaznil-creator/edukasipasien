@@ -932,6 +932,56 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Jenis GTN yang agresif dan dapat menyebar (sering ke paru), tetapi sangat responsif terhadap kemoterapi dengan angka kesembuhan tinggi.',
   },
+
+  // ——— Bartolin & Pemantauan ———
+  {
+    term: 'Kelenjar Bartolin',
+    slug: 'kelenjar-bartolin',
+    category: 'Anatomi',
+    aliases: ['bartolin', "bartholin's gland"],
+    definition:
+      'Sepasang kelenjar kecil di kedua sisi lubang vagina yang menghasilkan cairan pelumas. Bila salurannya tersumbat dapat terbentuk kista, dan bila terinfeksi menjadi abses.',
+  },
+  {
+    term: 'Abses',
+    slug: 'abses',
+    category: 'Umum',
+    aliases: ['kantong nanah', 'bisul'],
+    definition:
+      'Kumpulan nanah akibat infeksi, biasanya terasa nyeri, bengkak, dan kemerahan.',
+  },
+  {
+    term: 'Marsupialisasi',
+    slug: 'marsupialisasi',
+    category: 'Pengobatan',
+    aliases: ['marsupialization'],
+    definition:
+      'Tindakan membuat lubang saluran permanen pada kista (misalnya kista Bartolin) agar cairannya dapat keluar dan tidak menumpuk lagi, untuk mencegah kekambuhan.',
+  },
+  {
+    term: 'Sitz Bath (Rendam Duduk)',
+    slug: 'sitz-bath',
+    category: 'Pengobatan',
+    aliases: ['rendam duduk', 'sitzbath'],
+    definition:
+      'Merendam area kemaluan dan bokong dalam air hangat selama beberapa menit untuk meredakan nyeri, menjaga kebersihan, dan membantu kista atau abses keluar.',
+  },
+  {
+    term: 'Kateter Word',
+    slug: 'kateter-word',
+    category: 'Pengobatan',
+    aliases: ['word catheter', 'kateter bartolin'],
+    definition:
+      'Selang kecil berbalon yang dipasang setelah abses Bartolin dikeluarkan, dibiarkan beberapa minggu agar terbentuk saluran baru yang menetap.',
+  },
+  {
+    term: 'Sistitis Radiasi',
+    slug: 'sistitis-radiasi',
+    category: 'Efek samping',
+    aliases: ['radiasi kandung kemih'],
+    definition:
+      'Peradangan kandung kemih akibat radioterapi panggul; dapat menimbulkan nyeri atau perdarahan saat berkemih dan keinginan berkemih yang lebih sering.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
