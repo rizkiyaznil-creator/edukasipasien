@@ -890,6 +890,48 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Pemeriksaan melihat bagian dalam usus besar atau rektum menggunakan selang berkamera, kadang sekaligus mengambil contoh jaringan (biopsi).',
   },
+
+  // ——— Mola Hidatidosa & GTN ———
+  {
+    term: 'Mola Hidatidosa (Hamil Anggur)',
+    slug: 'mola-hidatidosa',
+    category: 'Umum',
+    aliases: ['hamil anggur', 'mola', 'molahidatidosa'],
+    definition:
+      'Kehamilan tidak normal ("hamil anggur") ketika jaringan calon plasenta tumbuh berlebihan membentuk gelembung seperti anggur, tanpa janin yang berkembang normal. Termasuk penyakit trofoblas gestasional.',
+  },
+  {
+    term: 'Penyakit Trofoblas Gestasional (PTG)',
+    slug: 'penyakit-trofoblas',
+    category: 'Umum',
+    aliases: ['ptg', 'penyakit trofoblas', 'gtd'],
+    definition:
+      'Kelompok kondisi akibat pertumbuhan abnormal sel trofoblas (sel pembentuk plasenta), mulai dari mola hidatidosa yang umumnya jinak hingga bentuk ganas (GTN).',
+  },
+  {
+    term: 'GTN (Neoplasia Trofoblas Gestasional)',
+    slug: 'gtn',
+    category: 'Umum',
+    aliases: ['neoplasia trofoblas gestasional', 'tumor trofoblas', 'gtn'],
+    definition:
+      'Bentuk ganas atau menetap dari penyakit trofoblas — termasuk mola invasif dan koriokarsinoma. Dapat muncul setelah mola, keguguran, atau persalinan, dan ditandai kadar hCG yang menetap atau naik.',
+  },
+  {
+    term: 'β-hCG (Hormon Kehamilan)',
+    slug: 'hcg',
+    category: 'Pemeriksaan',
+    aliases: ['hcg', 'beta hcg', 'b-hcg', 'hormon kehamilan'],
+    definition:
+      'Hormon yang diproduksi sel plasenta dan terdeteksi pada tes kehamilan. Pada penyakit trofoblas, kadarnya sangat tinggi dan dipakai untuk membantu diagnosis serta pemantauan.',
+  },
+  {
+    term: 'Koriokarsinoma',
+    slug: 'koriokarsinoma',
+    category: 'Umum',
+    aliases: ['choriocarcinoma'],
+    definition:
+      'Jenis GTN yang agresif dan dapat menyebar (sering ke paru), tetapi sangat responsif terhadap kemoterapi dengan angka kesembuhan tinggi.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
