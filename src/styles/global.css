@@ -7,7 +7,7 @@
   --c-accent: #9d4e7c;
   --c-accent-soft: #f4e9ef;
 
-  --c-bg: #fbfbfa;
+  --c-bg: #faf8f3;
   --c-surface: #ffffff;
   --c-border: #e6e8eb;
   --c-text: #1f2933;
@@ -522,6 +522,24 @@ img {
   color: var(--c-text-soft);
 }
 .muted {
+  color: var(--c-text-muted);
+}
+
+/* —— Hero: sorot kata, tombol aksi, strip kepercayaan —— */
+.hl {
+  background: linear-gradient(transparent 55%, #f0dbe7 55%);
+  padding: 0 0.08em;
+  border-radius: 2px;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.2rem 0 0;
+}
+.trust {
+  margin: 0.9rem 0 0;
+  font-size: 0.86rem;
   color: var(--c-text-muted);
 }
 

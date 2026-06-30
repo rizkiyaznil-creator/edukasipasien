@@ -30,14 +30,14 @@ const categories = [
 ---
 
 <BaseLayout
-  title="medangynsurgery"
-  description="medangynsurgery (Sahabat Ginekologi Onkologi): edukasi pasien tentang kanker organ reproduksi perempuan dengan bahasa yang mudah dipahami."
+  title="Medan Gyn Surgery"
+  description="Medan Gyn Surgery (Sahabat Ginekologi Onkologi): edukasi pasien tentang kanker organ reproduksi perempuan dengan bahasa yang mudah dipahami."
 >
   <section style="margin:1.4rem 0 0.5rem">
     <p class="eyebrow">Edukasi Pasien Ginekologi Onkologi</p>
-    <h1>Memahami kanker perempuan dengan bahasa yang mudah</h1>
+    <h1>Memahami kanker perempuan dengan bahasa yang <span class="hl">mudah</span></h1>
     <p class="lead">
-      <strong>medangynsurgery</strong> — Sahabat Ginekologi Onkologi — membantu Anda dan
+      <strong>Medan Gyn Surgery</strong> — Sahabat Ginekologi Onkologi — membantu Anda dan
       keluarga memahami penyakit, pemeriksaan, dan pengobatan kanker pada organ
       reproduksi perempuan. Langkah demi langkah, tanpa istilah yang
       membingungkan.
@@ -46,7 +46,14 @@ const categories = [
       Maintained and curated by
       <strong>dr. Muhammad Rizki Yaznil, M.Ked(OG), SpOG.Subsp(Onk)</strong>
     </p>
+    <div class="hero-actions">
+      <a class="btn" href="#topik">Jelajahi topik</a>
+      <a class="btn btn--ghost" href={withBase('/kamus')}>Buka Kamus</a>
+    </div>
+    <p class="trust">✓ Ditinjau dokter spesialis · {topics.length} topik · Gratis &amp; tanpa iklan</p>
   </section>
+
+  <span id="topik" aria-hidden="true"></span>
 
   {
     categories.map((cat) => (
@@ -88,7 +95,7 @@ const categories = [
     <TopicCard
       href={withBase('/tentang')}
       icon="🩺"
-      title="Tentang medangynsurgery"
+      title="Tentang Medan Gyn Surgery"
       summary="Tujuan situs, cara memakainya, dan catatan penting sebelum membaca."
       noBadge
     />
