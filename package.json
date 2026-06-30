@@ -1,8 +1,8 @@
 {
-  "name": "temant",
+  "name": "medangynsurgery",
   "type": "module",
   "version": "0.1.0",
-  "description": "Temant — Sahabat Ginekologi Onkologi: edukasi pasien yang mudah dipahami",
+  "description": "medangynsurgery — Sahabat Ginekologi Onkologi: edukasi pasien yang mudah dipahami",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

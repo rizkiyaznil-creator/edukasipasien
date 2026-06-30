@@ -1,4 +1,4 @@
-# Temant — Sahabat Ginekologi Onkologi
+# medangynsurgery — Sahabat Ginekologi Onkologi
 
 Media edukasi pasien tentang **kanker organ reproduksi perempuan** (kanker
 serviks, ovarium, rahim, dll.) dengan bahasa yang mudah dipahami.

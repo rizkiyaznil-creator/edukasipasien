@@ -18,7 +18,7 @@ const qrSvg = await QRCode.toString(appUrl, {
   <h2>Bagikan aplikasi</h2>
   <p class="share-app-desc">
     Bantu lebih banyak orang memahami kesehatan reproduksi perempuan. Bagikan
-    Temant lewat WhatsApp atau media lain, atau tunjukkan QR berikut untuk
+    medangynsurgery lewat WhatsApp atau media lain, atau tunjukkan QR berikut untuk
     dipindai.
   </p>
   <div class="share-body">
@@ -56,7 +56,7 @@ const qrSvg = await QRCode.toString(appUrl, {
     btn.addEventListener('click', async () => {
       const url = btn.getAttribute('data-url') || location.href;
       const shareData = {
-        title: 'Temant — Sahabat Ginekologi Onkologi',
+        title: 'medangynsurgery — Sahabat Ginekologi Onkologi',
         text: 'Edukasi pasien ginekologi onkologi dengan bahasa yang mudah dipahami.',
         url,
       };
