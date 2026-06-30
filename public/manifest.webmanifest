@@ -7,7 +7,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fbfbfa",
-  "theme_color": "#0d7a6f",
+  "theme_color": "#0f766e",
   "lang": "id",
   "dir": "ltr",
   "categories": ["health", "education", "medical"],

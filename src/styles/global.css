@@ -1,10 +1,11 @@
 :root {
-  /* Warna utama: teal yang menenangkan (kesan medis & tepercaya) */
-  --c-primary: #0d7a6f;
-  --c-primary-dark: #095c54;
-  --c-primary-soft: #e3f3f1;
-  --c-accent: #e8746a;
-  --c-accent-soft: #fdecea;
+  /* Warna utama: teal #0F766E (kesan medis, tenang, tepercaya) */
+  --c-primary: #0f766e;
+  --c-primary-dark: #115e59;
+  --c-primary-soft: #e2f1ed;
+  /* Aksen: plum #9D4E7C (dipakai hemat agar tetap tenang) */
+  --c-accent: #9d4e7c;
+  --c-accent-soft: #f4e9ef;
 
   --c-bg: #fbfbfa;
   --c-surface: #ffffff;
@@ -27,8 +28,9 @@
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 4px 16px rgba(16, 24, 40, 0.06);
   --maxw: 760px;
 
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Noto Sans", sans-serif;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif;
+  --font-heading: "Lora", Georgia, "Times New Roman", serif;
 
   /* Ukuran teks lega untuk dibaca di HP */
   --fs-base: 1.075rem;
@@ -70,9 +72,15 @@ a:hover {
   color: var(--c-primary);
 }
 
+::selection {
+  background: var(--c-primary-soft);
+  color: var(--c-primary-dark);
+}
+
 h1,
 h2,
 h3 {
+  font-family: var(--font-heading);
   line-height: 1.25;
   color: #14202b;
   scroll-margin-top: 80px;
@@ -184,11 +192,12 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.2px;
   color: #14202b;
   text-decoration: none;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 .brand .logo {
   width: 30px;
@@ -197,6 +206,7 @@ img {
 }
 .brand small {
   display: block;
+  font-family: var(--font);
   font-weight: 500;
   font-size: 0.68rem;
   letter-spacing: 0.3px;
@@ -234,6 +244,7 @@ img {
   padding-block: 1.8rem 2.2rem;
 }
 .site-footer h4 {
+  font-family: var(--font-heading);
   color: #fff;
   margin: 0 0 0.4rem;
 }
@@ -266,7 +277,7 @@ img {
 .card[href]:hover {
   transform: translateY(-2px);
   border-color: var(--c-primary);
-  box-shadow: 0 6px 22px rgba(13, 122, 111, 0.14);
+  box-shadow: 0 6px 22px rgba(15, 118, 110, 0.16);
 }
 .card .ic {
   font-size: 1.8rem;
@@ -503,7 +514,7 @@ img {
   letter-spacing: 0.8px;
   font-size: 0.74rem;
   font-weight: 700;
-  color: var(--c-primary);
+  color: var(--c-accent);
   margin: 0;
 }
 .lead {
