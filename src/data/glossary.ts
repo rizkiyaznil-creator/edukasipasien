@@ -1012,9 +1012,43 @@ export const glossary: GlossaryEntry[] = [
     term: 'Polip',
     slug: 'polip',
     category: 'Umum',
-    aliases: ['polip rahim', 'polip serviks', 'polip endometrium'],
+    aliases: ['benjolan bertangkai'],
     definition:
       'Pertumbuhan jaringan kecil bertangkai, misalnya pada lapisan rahim atau serviks. Umumnya jinak, tetapi dapat menyebabkan perdarahan dan kadang perlu diangkat.',
+  },
+
+  // ——— Polip Endometrium & Serviks ———
+  {
+    term: 'Polip Endometrium',
+    slug: 'polip-endometrium',
+    category: 'Umum',
+    aliases: ['polip rahim', 'polip lapisan rahim'],
+    definition:
+      'Pertumbuhan jaringan kecil yang menonjol dari lapisan dalam rahim (endometrium), sering bertangkai dan berada di dalam rongga rahim. Umumnya jinak, tetapi dapat menyebabkan perdarahan tidak normal dan kadang perlu diangkat lalu diperiksa di laboratorium.',
+  },
+  {
+    term: 'Polip Serviks',
+    slug: 'polip-serviks',
+    category: 'Umum',
+    aliases: ['polip leher rahim', 'polip mulut rahim'],
+    definition:
+      'Pertumbuhan jaringan kecil pada serviks (leher rahim) yang sering terlihat langsung saat pemeriksaan dengan spekulum. Hampir selalu jinak dan biasanya mudah diangkat dengan tindakan kecil.',
+  },
+  {
+    term: 'Sonohisterografi (USG dengan Cairan)',
+    slug: 'sonohisterografi',
+    category: 'Pemeriksaan',
+    aliases: ['sis', 'saline infusion sonography', 'usg dengan cairan', 'hidrosonografi'],
+    definition:
+      'Pemeriksaan USG yang dilakukan setelah sedikit cairan steril dimasukkan ke dalam rongga rahim. Cairan membantu menampilkan polip atau penebalan pada lapisan rahim dengan lebih jelas.',
+  },
+  {
+    term: 'Polipektomi',
+    slug: 'polipektomi',
+    category: 'Pengobatan',
+    aliases: ['pengangkatan polip', 'angkat polip'],
+    definition:
+      'Tindakan mengangkat polip. Polip serviks sering dapat diangkat di poliklinik, sedangkan polip di dalam rahim umumnya diangkat melalui histeroskopi. Jaringannya kemudian diperiksa di laboratorium.',
   },
 ];
 
