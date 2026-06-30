@@ -675,6 +675,87 @@ hr {
   display: none;
 }
 
+/* —— Halaman Hubungi —— */
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+  margin: 1.4rem 0 0.4rem;
+}
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.05s ease;
+}
+.contact-card:hover {
+  border-color: var(--c-primary);
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.1);
+}
+.contact-card:active {
+  transform: translateY(1px);
+}
+.contact-ic {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--c-primary-soft);
+  color: var(--c-primary-dark);
+}
+.contact-ic svg {
+  width: 24px;
+  height: 24px;
+}
+.contact-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.contact-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--c-text-muted);
+}
+.contact-value {
+  font-weight: 600;
+  word-break: break-word;
+}
+.contact-cta {
+  flex: 0 0 auto;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--c-primary-dark);
+}
+.contact-copy-row {
+  margin: 0.4rem 0 0;
+}
+.footer-contact a {
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .contact-card {
+    flex-wrap: wrap;
+  }
+  .contact-cta {
+    flex-basis: 100%;
+    padding-left: calc(44px + 0.9rem);
+  }
+}
+
 /* —— Cetak (handout) —— */
 @media print {
   .site-header,
