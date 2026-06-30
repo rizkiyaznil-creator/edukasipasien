@@ -86,8 +86,13 @@ h3 {
   scroll-margin-top: 80px;
 }
 h1 {
-  font-size: 1.85rem;
-  margin: 0 0 0.5rem;
+  font-size: 2.05rem;
+  margin: 0 0 0.6rem;
+}
+@media (min-width: 700px) {
+  h1 {
+    font-size: 2.35rem;
+  }
 }
 h2 {
   font-size: 1.4rem;
@@ -541,6 +546,32 @@ img {
   margin: 0.9rem 0 0;
   font-size: 0.86rem;
   color: var(--c-text-muted);
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero-botanical {
+  position: absolute;
+  top: -10px;
+  right: -6px;
+  width: 200px;
+  height: auto;
+  color: var(--c-primary);
+  opacity: 0.13;
+  z-index: -1;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .hero-botanical {
+    width: 132px;
+    opacity: 0.1;
+    right: -10px;
+  }
+}
+.cat-ic {
+  font-size: 0.82em;
+  opacity: 0.95;
 }
 
 /* —— Kamus —— */

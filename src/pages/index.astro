@@ -27,13 +27,31 @@ const categories = [
   ...CATEGORY_ORDER.filter((c) => byCategory(c).length > 0),
   ...extraCats,
 ];
+
+// Ikon kecil pembeda untuk tiap kategori di beranda.
+const catIcon: Record<string, string> = {
+  'Kanker Ginekologi': '🎗️',
+  'Pencegahan & Deteksi Dini': '🛡️',
+  'Ginekologi Umum': '🌿',
+  'Pengobatan & Prosedur': '🩺',
+};
 ---
 
 <BaseLayout
   title="Medan Gyn Surgery"
   description="Medan Gyn Surgery (Sahabat Ginekologi Onkologi): edukasi pasien tentang kanker organ reproduksi perempuan dengan bahasa yang mudah dipahami."
 >
-  <section style="margin:1.4rem 0 0.5rem">
+  <section class="hero" style="margin:1.4rem 0 0.5rem">
+    <svg class="hero-botanical" viewBox="0 0 200 260" fill="none" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M150 20 C 120 70, 100 130, 70 240" />
+        <path d="M138 48 q -22 -10 -40 -4" /><path d="M138 48 q 14 -16 36 -16" />
+        <path d="M126 82 q -24 -8 -42 0" /><path d="M126 82 q 12 -18 34 -20" />
+        <path d="M112 120 q -24 -6 -42 4" /><path d="M112 120 q 10 -18 32 -22" />
+        <path d="M98 162 q -22 -4 -40 8" /><path d="M98 162 q 10 -18 30 -22" />
+        <path d="M86 202 q -20 -2 -36 12" /><path d="M86 202 q 8 -16 26 -22" />
+      </g>
+    </svg>
     <p class="eyebrow">Edukasi Pasien Ginekologi Onkologi</p>
     <h1>Memahami kanker perempuan dengan bahasa yang <span class="hl">mudah</span></h1>
     <p class="lead">
@@ -58,7 +76,7 @@ const categories = [
   {
     categories.map((cat) => (
       <>
-        <h2>{cat}</h2>
+        <h2>{catIcon[cat] && <span class="cat-ic" aria-hidden="true">{catIcon[cat]} </span>}{cat}</h2>
         <div class="cards">
           {byCategory(cat).map((t) => (
             <TopicCard
