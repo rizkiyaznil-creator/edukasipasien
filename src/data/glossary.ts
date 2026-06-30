@@ -299,6 +299,88 @@ export const glossary: GlossaryEntry[] = [
       'Pengobatan yang membantu sistem kekebalan tubuh mengenali dan melawan sel kanker.',
   },
 
+  // ——— Terapi Target & Imunoterapi (pengobatan presisi) ———
+  {
+    term: 'Biomarker (Penanda Biologis)',
+    slug: 'biomarker',
+    category: 'Pemeriksaan',
+    aliases: ['penanda biologis', 'penanda tumor', 'pemeriksaan molekuler'],
+    definition:
+      'Penanda pada tumor atau darah yang dapat diperiksa untuk membantu dokter memilih pengobatan yang paling sesuai. Contohnya BRCA/HRD, dMMR/MSI, PD-L1, dan HER2.',
+  },
+  {
+    term: 'Penghambat PARP',
+    slug: 'penghambat-parp',
+    category: 'Pengobatan',
+    aliases: ['parp inhibitor', 'parp', 'olaparib', 'niraparib'],
+    definition:
+      'Obat terapi target yang melumpuhkan salah satu cara sel kanker memperbaiki kerusakan DNA-nya, sehingga sel kanker mati. Paling bermanfaat pada kanker ovarium dengan mutasi BRCA atau HRD, sering sebagai terapi pemeliharaan.',
+  },
+  {
+    term: 'Anti-angiogenesis',
+    slug: 'anti-angiogenesis',
+    category: 'Pengobatan',
+    aliases: ['bevacizumab', 'anti-vegf', 'penghambat pembuluh darah'],
+    definition:
+      'Obat target yang menghambat pembentukan pembuluh darah baru yang dibutuhkan tumor untuk tumbuh. Contohnya bevacizumab, dipakai pada kanker ovarium dan serviks.',
+  },
+  {
+    term: 'Penghambat Checkpoint Imun',
+    slug: 'penghambat-checkpoint',
+    category: 'Pengobatan',
+    aliases: ['immune checkpoint inhibitor', 'anti pd-1', 'anti pd-l1', 'pembrolizumab', 'dostarlimab'],
+    definition:
+      'Jenis imunoterapi yang melepas "rem" pada sistem kekebalan sehingga sel imun kembali aktif mengenali dan menyerang kanker. Contohnya pembrolizumab dan dostarlimab.',
+  },
+  {
+    term: 'Konjugat Antibodi-Obat (ADC)',
+    slug: 'konjugat-antibodi-obat',
+    category: 'Pengobatan',
+    aliases: ['adc', 'antibody-drug conjugate', 'tisotumab vedotin'],
+    definition:
+      'Obat yang menggabungkan antibodi sebagai "pengarah" dengan obat perusak sel, sehingga obat diantar lebih terarah ke sel kanker. Salah satu contohnya dipakai pada kanker serviks yang kambuh.',
+  },
+  {
+    term: 'Terapi Pemeliharaan (Maintenance)',
+    slug: 'terapi-pemeliharaan',
+    category: 'Pengobatan',
+    aliases: ['maintenance', 'terapi rumatan'],
+    definition:
+      'Pengobatan yang dilanjutkan setelah kemoterapi berhasil mengecilkan kanker, bertujuan menjaga remisi dan menunda kekambuhan. Pada kanker ovarium, contohnya penghambat PARP atau bevacizumab.',
+  },
+  {
+    term: 'HRD (Defisiensi Rekombinasi Homolog)',
+    slug: 'hrd',
+    category: 'Pemeriksaan',
+    aliases: ['homologous recombination deficiency', 'defisiensi rekombinasi homolog'],
+    definition:
+      'Kondisi ketika sel kanker kesulitan memperbaiki kerusakan DNA-nya. Tumor dengan HRD (termasuk yang bermutasi BRCA) cenderung lebih responsif terhadap penghambat PARP.',
+  },
+  {
+    term: 'dMMR / MSI-tinggi',
+    slug: 'dmmr-msi',
+    category: 'Pemeriksaan',
+    aliases: ['dmmr', 'msi', 'mismatch repair', 'mikrosatelit', 'msi-high', 'msi tinggi'],
+    definition:
+      'Ciri tumor yang menandakan sistem perbaikan DNA-nya tidak bekerja baik, sehingga banyak terjadi kesalahan genetik. Tumor dengan ciri ini — sering pada kanker rahim — umumnya merespons sangat baik terhadap imunoterapi.',
+  },
+  {
+    term: 'PD-L1',
+    slug: 'pd-l1',
+    category: 'Pemeriksaan',
+    aliases: ['pdl1', 'pd l1', 'cps'],
+    definition:
+      'Protein pada permukaan sel yang dapat "meredam" serangan sistem kekebalan. Bila tumor PD-L1 positif, imunoterapi penghambat checkpoint cenderung lebih bermanfaat — penting misalnya pada kanker serviks.',
+  },
+  {
+    term: 'HER2',
+    slug: 'her2',
+    category: 'Pemeriksaan',
+    aliases: ['her-2', 'her2/neu'],
+    definition:
+      'Protein yang bila berlebih dapat mendorong pertumbuhan kanker. Pada sebagian kanker rahim jenis serosa yang HER2-positif, tersedia terapi anti-HER2 seperti trastuzumab.',
+  },
+
   // ——— Pencegahan ———
   {
     term: 'Vaksin HPV',
