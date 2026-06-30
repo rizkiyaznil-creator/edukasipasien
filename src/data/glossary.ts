@@ -982,6 +982,40 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Peradangan kandung kemih akibat radioterapi panggul; dapat menimbulkan nyeri atau perdarahan saat berkemih dan keinginan berkemih yang lebih sering.',
   },
+
+  // ——— Menopause & Perdarahan Pascamenopause ———
+  {
+    term: 'Menopause',
+    slug: 'menopause',
+    category: 'Umum',
+    aliases: ['mati haid', 'berhenti haid'],
+    definition:
+      'Berhentinya haid secara permanen, ditetapkan setelah tidak haid selama 12 bulan berturut-turut. Setelah menopause, perdarahan apa pun dari vagina tidak normal dan perlu diperiksa.',
+  },
+  {
+    term: 'Perdarahan Pascamenopause',
+    slug: 'perdarahan-pascamenopause',
+    category: 'Umum',
+    aliases: ['perdarahan post menopause', 'perdarahan setelah menopause', 'pmb'],
+    definition:
+      'Perdarahan atau bercak dari vagina yang terjadi setelah menopause. Selalu perlu diperiksa dokter karena — meski sebagian besar penyebabnya jinak — dapat menjadi tanda dini kanker rahim.',
+  },
+  {
+    term: 'Atrofi (Penipisan Jaringan)',
+    slug: 'atrofi',
+    category: 'Umum',
+    aliases: ['atrofi endometrium', 'vaginitis atrofi', 'penipisan jaringan'],
+    definition:
+      'Penipisan dan melemahnya jaringan (misalnya lapisan rahim atau dinding vagina) akibat menurunnya hormon estrogen setelah menopause. Merupakan penyebab tersering perdarahan pascamenopause dan umumnya jinak.',
+  },
+  {
+    term: 'Polip',
+    slug: 'polip',
+    category: 'Umum',
+    aliases: ['polip rahim', 'polip serviks', 'polip endometrium'],
+    definition:
+      'Pertumbuhan jaringan kecil bertangkai, misalnya pada lapisan rahim atau serviks. Umumnya jinak, tetapi dapat menyebabkan perdarahan dan kadang perlu diangkat.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
