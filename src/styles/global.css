@@ -235,6 +235,24 @@ img {
   color: var(--c-primary-dark);
 }
 
+/* Header responsif: pada layar kecil, menu turun ke baris sendiri agar
+   wordmark utuh satu baris dan logo tetap sejajar. */
+@media (max-width: 600px) {
+  .site-header .bar {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    min-height: 0;
+    padding-block: 0.65rem;
+  }
+  .brand {
+    font-size: 1.1rem;
+  }
+  .nav {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
 /* —— Footer —— */
 .site-footer {
   margin-top: 3rem;
