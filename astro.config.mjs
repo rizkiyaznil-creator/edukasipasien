@@ -3,15 +3,14 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
-// Deploy: GitHub Pages (project site) -> https://rizkiyaznil-creator.github.io/edukasipasien/
-// - `site`  : origin GitHub Pages (tanpa subpath).
-// - `base`  : subpath repo. Semua tautan/aset internal memakai helper withBase()
-//             di src/lib/base.ts agar tetap benar di bawah subpath ini.
-// Jika nanti pindah ke domain sendiri di root, set `base` ke '/' (atau hapus)
-// dan ganti `site` ke domain final; QR/sitemap/canonical ikut menyesuaikan.
+// Deploy: GitHub Pages dengan custom domain -> https://medangynsurgery.com (root).
+// - `site` : domain final (dipakai untuk QR, sitemap, canonical).
+// - `base` : '/' karena tayang di root domain (bukan subpath).
+// Semua tautan/aset internal memakai helper withBase() di src/lib/base.ts.
+// File public/CNAME menjaga custom domain tetap terpasang pada tiap deploy.
 export default defineConfig({
-  site: 'https://rizkiyaznil-creator.github.io',
-  base: '/edukasipasien',
+  site: 'https://medangynsurgery.com',
+  base: '/',
   integrations: [mdx(), sitemap()],
   build: {
     inlineStylesheets: 'auto',

@@ -4,8 +4,8 @@
 //  - Aset (css/js/gambar/font): tampilkan dari cache sambil memperbarui di latar (stale-while-revalidate).
 // Naikkan VERSION saat ada perubahan besar agar cache lama dibersihkan.
 // BASE harus sama dengan `base` di astro.config.mjs (lihat scope SW di BaseLayout).
-const VERSION = 'temant-v2';
-const BASE = '/edukasipasien/';
+const VERSION = 'temant-v3';
+const BASE = '/';
 const CORE = [BASE];
 
 self.addEventListener('install', (event) => {
