@@ -1,0 +1,36 @@
+---
+// Google Analytics 4 (GA4).
+// Cara mengaktifkan:
+//   1. Buat properti GA4 di https://analytics.google.com
+//   2. Salin "Measurement ID" (formatnya G-XXXXXXXXXX)
+//   3. Tempelkan pada GA_ID di bawah ini, lalu commit & deploy.
+// Skrip HANYA dimuat di situs live (produksi) dan bila GA_ID sudah diisi,
+// serta hanya mengirim data dari domain resmi (bukan localhost / github.io),
+// sehingga tidak melacak saat pengembangan.
+const GA_ID = ''; // ← isi dengan Measurement ID Anda, mis. 'G-ABC123XYZ'
+const enabled = import.meta.env.PROD && GA_ID.startsWith('G-');
+---
+
+{
+  enabled && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <script define:vars={{ GA_ID }}>
+        if (location.hostname === 'medangynsurgery.com') {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          // Konfigurasi ramah privasi untuk situs edukasi pasien:
+          // anonimkan IP dan matikan sinyal iklan.
+          gtag('config', GA_ID, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false,
+          });
+        }
+      </script>
+    </>
+  )
+}
