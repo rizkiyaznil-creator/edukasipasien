@@ -1,0 +1,255 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+import { withBase } from '../../lib/base';
+---
+
+<ProLayout
+  title="Risiko Keganasan Massa Adneksa (RMI · IOTA · ROMA)"
+  description="Alat bantu stratifikasi risiko keganasan massa adneksa: Risk of Malignancy Index (RMI 1/Jacobs), IOTA Simple Rules, dan ROMA (HE4 + CA-125)."
+>
+  <p class="eyebrow">Kalkulator · Ginekologi Onkologi</p>
+  <h1>Risiko Keganasan Massa Adneksa</h1>
+  <p class="lead">
+    Tiga alat bantu untuk menstratifikasi risiko keganasan massa adneksa dan membantu
+    keputusan rujukan: <strong>RMI</strong>, <strong>IOTA Simple Rules</strong>, dan
+    <strong>ROMA</strong>. Gunakan sebagai pelengkap penilaian klinis, bukan penentu tunggal.
+  </p>
+
+  <div class="pro-tabs" role="tablist">
+    <button class="pro-tab is-active" data-tab="rmi" role="tab">RMI</button>
+    <button class="pro-tab" data-tab="iota" role="tab">IOTA Simple Rules</button>
+    <button class="pro-tab" data-tab="roma" role="tab">ROMA</button>
+  </div>
+
+  <!-- ————— RMI ————— -->
+  <section id="tab-rmi" class="calc pro-tabpanel" role="tabpanel">
+    <h2>RMI — Risk of Malignancy Index (RMI 1, Jacobs 1990)</h2>
+    <p class="calc-desc">RMI = U × M × CA-125.</p>
+
+    <fieldset>
+      <legend>Gambaran USG (1 poin tiap temuan)</legend>
+      <div class="checks">
+        <label><input type="checkbox" class="rmi-us" /> Kista multilokular</label>
+        <label><input type="checkbox" class="rmi-us" /> Area solid</label>
+        <label><input type="checkbox" class="rmi-us" /> Lesi bilateral</label>
+        <label><input type="checkbox" class="rmi-us" /> Asites</label>
+        <label><input type="checkbox" class="rmi-us" /> Metastasis intra-abdomen</label>
+      </div>
+      <small>Skor USG → U = 0 (0 poin), 1 (1 poin), atau 3 (≥2 poin).</small>
+    </fieldset>
+
+    <fieldset>
+      <legend>Status menopause</legend>
+      <label><input type="radio" name="rmi-meno" value="pre" checked /> Premenopause (M = 1)</label>
+      <label><input type="radio" name="rmi-meno" value="post" /> Pascamenopause (M = 3)</label>
+    </fieldset>
+
+    <div class="calc-field">
+      <label for="rmi-ca125">CA-125 (U/mL)</label>
+      <input type="number" id="rmi-ca125" min="0" step="0.1" placeholder="mis. 45" />
+    </div>
+
+    <div id="rmi-hasil" class="calc-result" aria-live="polite">
+      <p class="calc-result__hint">Isi CA-125 untuk menghitung.</p>
+    </div>
+    <p class="sources"><strong>Sumber:</strong> Jacobs I, dkk. <em>BJOG</em> 1990. Ambang lazim: <strong>RMI ≥ 200</strong> = risiko tinggi.</p>
+  </section>
+
+  <!-- ————— IOTA ————— -->
+  <section id="tab-iota" class="calc pro-tabpanel" role="tabpanel" hidden>
+    <h2>IOTA Simple Rules</h2>
+    <p class="calc-desc">Lima ciri jinak (B) dan lima ciri ganas (M).</p>
+
+    <fieldset>
+      <legend>Ciri jinak (B-features)</legend>
+      <div class="checks">
+        <label><input type="checkbox" class="iota-b" /> B1 — kista unilokular</label>
+        <label><input type="checkbox" class="iota-b" /> B2 — komponen solid, diameter terbesar &lt; 7 mm</label>
+        <label><input type="checkbox" class="iota-b" /> B3 — bayangan akustik (acoustic shadow)</label>
+        <label><input type="checkbox" class="iota-b" /> B4 — tumor multilokular halus, &lt; 100 mm</label>
+        <label><input type="checkbox" class="iota-b" /> B5 — tanpa aliran darah (color score 1)</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Ciri ganas (M-features)</legend>
+      <div class="checks">
+        <label><input type="checkbox" class="iota-m" /> M1 — tumor solid ireguler</label>
+        <label><input type="checkbox" class="iota-m" /> M2 — asites</label>
+        <label><input type="checkbox" class="iota-m" /> M3 — ≥ 4 struktur papiler</label>
+        <label><input type="checkbox" class="iota-m" /> M4 — tumor multilokular-solid ireguler, ≥ 100 mm</label>
+        <label><input type="checkbox" class="iota-m" /> M5 — aliran darah sangat kuat (color score 4)</label>
+      </div>
+    </fieldset>
+
+    <div id="iota-hasil" class="calc-result" aria-live="polite">
+      <p class="calc-result__hint">Centang ciri yang sesuai.</p>
+    </div>
+    <p class="sources"><strong>Sumber:</strong> Timmerman D, dkk. (IOTA), <em>UOG</em> 2008. Aturan: hanya M → ganas; hanya B → jinak; keduanya/tidak ada → tak terklasifikasi.</p>
+  </section>
+
+  <!-- ————— ROMA ————— -->
+  <section id="tab-roma" class="calc pro-tabpanel" role="tabpanel" hidden>
+    <h2>ROMA — Risk of Ovarian Malignancy Algorithm</h2>
+    <p class="calc-desc">Menggabungkan HE4, CA-125, dan status menopause.</p>
+
+    <div class="calc-field">
+      <label for="roma-he4">HE4 (pmol/L)</label>
+      <input type="number" id="roma-he4" min="0" step="0.1" placeholder="mis. 70" />
+    </div>
+    <div class="calc-field">
+      <label for="roma-ca125">CA-125 (U/mL)</label>
+      <input type="number" id="roma-ca125" min="0" step="0.1" placeholder="mis. 45" />
+    </div>
+    <fieldset>
+      <legend>Status menopause</legend>
+      <label><input type="radio" name="roma-meno" value="pre" checked /> Premenopause</label>
+      <label><input type="radio" name="roma-meno" value="post" /> Pascamenopause</label>
+    </fieldset>
+
+    <div id="roma-hasil" class="calc-result" aria-live="polite">
+      <p class="calc-result__hint">Isi HE4 dan CA-125 untuk menghitung.</p>
+    </div>
+    <div class="pro-note pro-note--warn">
+      <p class="pro-note__title">Ambang bergantung assay</p>
+      <p>
+        Kalkulator ini memakai koefisien Moore (2009) dan ambang <strong>Roche Elecsys</strong>
+        (premenopause ≥ 11,4%; pascamenopause ≥ 29,9%). <strong>Assay lain (mis. Abbott,
+        Fujirebio) memakai ambang berbeda</strong> — selalu ikuti nilai rujukan laboratorium Anda.
+      </p>
+    </div>
+    <p class="sources"><strong>Sumber:</strong> Moore RG, dkk. <em>Gynecol Oncol</em> 2009. Satuan HE4 = pmol/L, CA-125 = U/mL.</p>
+  </section>
+
+  <p><a href={withBase('/profesional')}>← Kembali ke Untuk Dokter</a></p>
+</ProLayout>
+
+<script>
+  const num = (id: string) => {
+    const el = document.getElementById(id) as HTMLInputElement | null;
+    const v = el ? parseFloat(el.value) : NaN;
+    return Number.isFinite(v) ? v : NaN;
+  };
+  const setHTML = (id: string, html: string) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  };
+  const radio = (name: string) =>
+    (document.querySelector(`input[name="${name}"]:checked`) as HTMLInputElement)?.value;
+
+  const badge = (level: 'high' | 'low' | 'mid', text: string) =>
+    `<span class="risk-badge risk-badge--${level}">${text}</span>`;
+
+  // ————— RMI —————
+  function computeRMI() {
+    const pts = Array.from(document.querySelectorAll<HTMLInputElement>('.rmi-us')).filter(
+      (c) => c.checked
+    ).length;
+    const U = pts === 0 ? 0 : pts === 1 ? 1 : 3;
+    const M = radio('rmi-meno') === 'post' ? 3 : 1;
+    const ca = num('rmi-ca125');
+    if (Number.isNaN(ca)) {
+      setHTML('rmi-hasil', '<p class="calc-result__hint">Isi CA-125 untuk menghitung.</p>');
+      return;
+    }
+    const rmi = U * M * ca;
+    const high = rmi >= 200;
+    setHTML(
+      'rmi-hasil',
+      `<dl class="calc-out">
+        <div><dt>Skor U</dt><dd>${U} <span class="calc-out__sub">(${pts} temuan USG)</span></dd></div>
+        <div><dt>Skor M</dt><dd>${M}</dd></div>
+        <div><dt>RMI</dt><dd><strong>${rmi.toLocaleString('id-ID', { maximumFractionDigits: 1 })}</strong></dd></div>
+        <div><dt>Interpretasi</dt><dd>${
+          high
+            ? badge('high', 'Risiko tinggi (≥ 200)') +
+              ' — pertimbangkan rujukan ke ginekologi-onkologi.'
+            : badge('low', 'Risiko lebih rendah (< 200)') + ' — tafsirkan dalam konteks klinis.'
+        }</dd></div>
+      </dl>`
+    );
+  }
+
+  // ————— IOTA Simple Rules —————
+  function computeIOTA() {
+    const b = Array.from(document.querySelectorAll<HTMLInputElement>('.iota-b')).filter(
+      (c) => c.checked
+    ).length;
+    const m = Array.from(document.querySelectorAll<HTMLInputElement>('.iota-m')).filter(
+      (c) => c.checked
+    ).length;
+    let out: string;
+    if (m > 0 && b === 0)
+      out = badge('high', 'Ganas') + ' — hanya ciri M yang ada.';
+    else if (b > 0 && m === 0)
+      out = badge('low', 'Jinak') + ' — hanya ciri B yang ada.';
+    else
+      out =
+        badge('mid', 'Tak terklasifikasi') +
+        ' — ciri B dan M sama-sama ada, atau tidak ada. Pertimbangkan penilaian ahli / model ADNEX.';
+    setHTML(
+      'iota-hasil',
+      `<dl class="calc-out">
+        <div><dt>Ciri B (jinak)</dt><dd>${b}</dd></div>
+        <div><dt>Ciri M (ganas)</dt><dd>${m}</dd></div>
+        <div><dt>Klasifikasi</dt><dd>${out}</dd></div>
+      </dl>`
+    );
+  }
+
+  // ————— ROMA —————
+  function computeROMA() {
+    const he4 = num('roma-he4');
+    const ca = num('roma-ca125');
+    if (Number.isNaN(he4) || Number.isNaN(ca) || he4 <= 0 || ca <= 0) {
+      setHTML('roma-hasil', '<p class="calc-result__hint">Isi HE4 dan CA-125 (&gt; 0).</p>');
+      return;
+    }
+    const post = radio('roma-meno') === 'post';
+    const pi = post
+      ? -8.09 + 1.04 * Math.log(he4) + 0.732 * Math.log(ca)
+      : -12.0 + 2.38 * Math.log(he4) + 0.0626 * Math.log(ca);
+    const roma = (Math.exp(pi) / (1 + Math.exp(pi))) * 100;
+    const cutoff = post ? 29.9 : 11.4;
+    const high = roma >= cutoff;
+    setHTML(
+      'roma-hasil',
+      `<dl class="calc-out">
+        <div><dt>ROMA</dt><dd><strong>${roma.toFixed(1)}%</strong></dd></div>
+        <div><dt>Ambang (Roche)</dt><dd>≥ ${cutoff}% (${post ? 'pascamenopause' : 'premenopause'})</dd></div>
+        <div><dt>Interpretasi</dt><dd>${
+          high
+            ? badge('high', 'Risiko tinggi') + ' — pertimbangkan rujukan ke ginekologi-onkologi.'
+            : badge('low', 'Risiko rendah') + ' — tafsirkan dalam konteks klinis.'
+        }</dd></div>
+      </dl>`
+    );
+  }
+
+  // Listeners
+  for (const el of Array.from(
+    document.querySelectorAll('.rmi-us, #rmi-ca125, input[name="rmi-meno"]')
+  ))
+    el.addEventListener('input', computeRMI);
+  for (const el of Array.from(document.querySelectorAll('.iota-b, .iota-m')))
+    el.addEventListener('input', computeIOTA);
+  for (const el of Array.from(
+    document.querySelectorAll('#roma-he4, #roma-ca125, input[name="roma-meno"]')
+  ))
+    el.addEventListener('input', computeROMA);
+
+  // Tabs
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.pro-tab'));
+  const panels: Record<string, HTMLElement | null> = {
+    rmi: document.getElementById('tab-rmi'),
+    iota: document.getElementById('tab-iota'),
+    roma: document.getElementById('tab-roma'),
+  };
+  for (const t of tabs) {
+    t.addEventListener('click', () => {
+      const key = t.dataset.tab!;
+      tabs.forEach((x) => x.classList.toggle('is-active', x === t));
+      for (const [k, p] of Object.entries(panels)) if (p) p.hidden = k !== key;
+    });
+  }
+</script>

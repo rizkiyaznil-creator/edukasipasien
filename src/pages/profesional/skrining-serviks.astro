@@ -1,0 +1,102 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+import { withBase } from '../../lib/base';
+---
+
+<ProLayout
+  title="Skrining Kanker Serviks (Referensi Klinis)"
+  description="Ringkasan skrining kanker serviks untuk tenaga kesehatan: metode (IVA, Pap, HPV DNA), rekomendasi WHO 2021, program nasional Indonesia, dan kapan merujuk."
+>
+  <p class="eyebrow">Referensi · Ginekologi Onkologi</p>
+  <h1>Skrining Kanker Serviks</h1>
+  <p class="lead">
+    Ringkasan praktis metode skrining, usia &amp; interval menurut <strong>WHO 2021</strong>
+    dan <strong>program nasional Indonesia</strong>, serta rambu rujukan. Disusun sebagai
+    rujukan cepat — sesuaikan dengan pedoman resmi terbaru dan kondisi setempat.
+  </p>
+
+  <h2>Metode yang tersedia</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Metode</th><th>Prinsip</th><th>Catatan</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tes HPV DNA</strong></td>
+          <td>Deteksi DNA HPV risiko tinggi (mis. 16/18 dan lainnya).</td>
+          <td>Sensitivitas tertinggi; kini <strong>metode pilihan utama</strong> (WHO). Bisa dengan <em>self-sampling</em>. Perlu triase bila positif.</td>
+        </tr>
+        <tr>
+          <td><strong>Sitologi (Pap smear)</strong></td>
+          <td>Pemeriksaan sel serviks (konvensional / liquid-based).</td>
+          <td>Spesifik; sensitivitas lebih rendah dari HPV DNA. Perlu laboratorium &amp; SDM sitologi.</td>
+        </tr>
+        <tr>
+          <td><strong>IVA</strong></td>
+          <td>Inspeksi Visual dengan Asam asetat — melihat lesi acetowhite.</td>
+          <td>Murah, hasil langsung, mendukung pendekatan <em>single-visit / see-and-treat</em>. Bergantung keterampilan pemeriksa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Rekomendasi WHO (2021)</h2>
+  <ul>
+    <li><strong>Metode utama:</strong> tes <strong>HPV DNA</strong> sebagai skrining primer (bukan IVA/sitologi bila tersedia).</li>
+    <li><strong>Populasi umum:</strong> mulai usia <strong>30 tahun</strong>, ulangi tiap <strong>5–10 tahun</strong> hingga usia 50; dapat dihentikan setelah dua hasil negatif berturut sesuai interval.</li>
+    <li><strong>Perempuan dengan HIV:</strong> mulai usia <strong>25 tahun</strong>, ulangi tiap <strong>3–5 tahun</strong>.</li>
+    <li>Bila HPV positif → <strong>triase</strong> (mis. sitologi, genotip 16/18, atau IVA) sebelum tindakan.</li>
+  </ul>
+
+  <h2>Program nasional Indonesia</h2>
+  <ul>
+    <li>
+      <strong>RAN Eliminasi Kanker Leher Rahim 2023–2030</strong> (Kemenkes): target
+      <strong>vaksinasi HPV</strong> pada anak perempuan (± usia 15 th), <strong>skrining
+      HPV DNA</strong> pada perempuan <strong>30–69 tahun</strong>, dan cakupan
+      pengobatan lesi prakanker.
+    </li>
+    <li>
+      <strong>Praktik saat ini</strong> di banyak FKTP masih memakai <strong>IVA</strong>
+      dan <strong>Pap smear</strong>; IVA umumnya untuk perempuan <strong>30–50 tahun</strong>
+      dengan pendekatan <em>single-visit / see-and-treat</em>, tiap <strong>3–5 tahun</strong>.
+    </li>
+    <li>
+      <strong>Transisi menuju HPV DNA</strong> (termasuk <em>self-sampling</em>) sedang
+      diperluas secara nasional.
+    </li>
+  </ul>
+
+  <div class="pro-note pro-note--info">
+    <p class="pro-note__title">Catatan versi</p>
+    <p>
+      Kebijakan skrining Indonesia sedang beralih dari IVA/Pap ke HPV DNA. Untuk keputusan
+      program, gunakan <strong>pedoman Kemenkes/POGI/HOGI terkini</strong>; ringkasan ini
+      dapat tertinggal dari edaran terbaru.
+    </p>
+  </div>
+
+  <h2>Menyikapi hasil (garis besar)</h2>
+  <ul>
+    <li><strong>IVA positif:</strong> pertimbangkan krioterapi/termal ablasi (see-and-treat) atau rujuk sesuai kelayakan lesi.</li>
+    <li><strong>HPV positif:</strong> triase (sitologi / genotip 16-18); tindak lanjut sesuai hasil.</li>
+    <li><strong>Sitologi abnormal</strong> (ASC-US HPV+/LSIL/HSIL/AGC): arahkan ke <strong>kolposkopi</strong> ± biopsi sesuai pedoman.</li>
+  </ul>
+
+  <h2>Kapan merujuk (ginekologi / ginekologi-onkologi)</h2>
+  <ul>
+    <li>Serviks tampak/teraba <strong>mencurigakan kanker</strong> (massa, ulkus, rapuh, mudah berdarah) — <strong>rujuk, jangan hanya di-skrining</strong>.</li>
+    <li><strong>Perdarahan pascasenggama</strong>, perdarahan pascamenopause, atau keputihan patologis yang mencurigakan.</li>
+    <li>Hasil <strong>HSIL</strong>, kolposkopi/biopsi abnormal, atau curiga <strong>lesi invasif</strong>.</li>
+    <li>Kehamilan dengan sitologi/kolposkopi abnormal (penanganan khusus).</li>
+  </ul>
+
+  <p class="sources">
+    <strong>Sumber:</strong>
+    <a href="https://www.who.int/news/item/06-07-2021-new-recommendations-for-screening-and-treatment-to-prevent-cervical-cancer" target="_blank" rel="noopener noreferrer">WHO (2021) — new recommendations for cervical screening &amp; treatment</a>;
+    Kemenkes RI — Rencana Aksi Nasional Eliminasi Kanker Leher Rahim 2023–2030.
+  </p>
+
+  <p><a href={withBase('/profesional')}>← Kembali ke Untuk Dokter</a></p>
+</ProLayout>

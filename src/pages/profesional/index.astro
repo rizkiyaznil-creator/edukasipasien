@@ -1,0 +1,64 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+import { withBase } from '../../lib/base';
+
+const tools = [
+  {
+    href: '/profesional/skrining-serviks',
+    icon: '🔬',
+    kind: 'Referensi',
+    title: 'Skrining Kanker Serviks',
+    desc: 'Ringkasan metode (IVA, Pap, HPV DNA), usia & interval — WHO 2021 dan program nasional Indonesia, plus kapan merujuk.',
+  },
+  {
+    href: '/profesional/kalkulator-usia-kehamilan',
+    icon: '📅',
+    kind: 'Kalkulator',
+    title: 'Usia Kehamilan & Taksiran Persalinan',
+    desc: 'Hitung usia kehamilan (UK) dan taksiran persalinan (HPL) dari HPHT atau dari usia kehamilan pada USG.',
+  },
+  {
+    href: '/profesional/risiko-massa-adneksa',
+    icon: '🧮',
+    kind: 'Kalkulator',
+    title: 'Risiko Keganasan Massa Adneksa',
+    desc: 'RMI (Jacobs), IOTA Simple Rules, dan ROMA (HE4 + CA-125) untuk membantu stratifikasi risiko & keputusan rujukan.',
+  },
+];
+---
+
+<ProLayout
+  title="Untuk Dokter"
+  description="Ruang klinis Medan Gyn Surgery: ringkasan dan alat bantu praktik OB-GYN untuk SpOG, residen, dan dokter umum perujuk."
+>
+  <p class="eyebrow">Ruang Klinis</p>
+  <h1>Untuk Dokter</h1>
+  <p class="lead">
+    Kumpulan <strong>ringkasan singkat</strong> dan <strong>alat bantu</strong> untuk
+    membantu praktik sehari-hari — ditujukan bagi <strong>dokter spesialis obstetri
+    &amp; ginekologi, residen (PPDS), dan dokter umum perujuk</strong>. Semua materi
+    bersumber dan diberi penanda versi; harap tetap merujuk pada pedoman resmi terbaru.
+  </p>
+
+  <div class="pro-grid">
+    {
+      tools.map((t) => (
+        <a class="pro-card" href={withBase(t.href)}>
+          <span class="pro-card__ic" aria-hidden="true">{t.icon}</span>
+          <span class="pro-card__kind">{t.kind}</span>
+          <span class="pro-card__title">{t.title}</span>
+          <span class="pro-card__desc">{t.desc}</span>
+        </a>
+      ))
+    }
+    <div class="pro-card pro-card--soon">
+      <span class="pro-card__ic" aria-hidden="true">➕</span>
+      <span class="pro-card__kind">Menyusul</span>
+      <span class="pro-card__title">Alat &amp; referensi lain</span>
+      <span class="pro-card__desc">
+        Mis. staging FIGO ringkas, skor prognostik GTN, kalkulator dosis kemoterapi
+        (BSA, AUC Calvert), dan kriteria rujukan ginekologi-onkologi — sedang disiapkan.
+      </span>
+    </div>
+  </div>
+</ProLayout>

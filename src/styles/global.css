@@ -756,6 +756,328 @@ hr {
   }
 }
 
+/* —— Halaman profesional (/profesional) —— */
+.pro-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 1rem 0 1.4rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--c-accent-soft);
+  border: 1px solid var(--c-border);
+  border-left: 4px solid var(--c-accent);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+.pro-banner__tag {
+  flex: 0 0 auto;
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+.pro-banner__text {
+  flex: 1 1 260px;
+  color: var(--c-text-muted);
+}
+.pro-footnote {
+  margin: 2rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--c-border);
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+}
+
+.pro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.9rem;
+  margin: 1.4rem 0;
+}
+.pro-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+a.pro-card:hover {
+  border-color: var(--c-primary);
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.1);
+}
+a.pro-card:active {
+  transform: translateY(1px);
+}
+.pro-card__ic {
+  font-size: 1.6rem;
+}
+.pro-card__kind {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-primary-dark);
+}
+.pro-card__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.pro-card__desc {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+}
+.pro-card--soon {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+/* Notes & sumber */
+.pro-note {
+  margin: 1.2rem 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--c-border);
+  border-left: 4px solid var(--c-primary);
+  border-radius: var(--radius-sm);
+  background: var(--c-primary-soft);
+  font-size: 0.92rem;
+}
+.pro-note--warn {
+  border-left-color: #b8860b;
+  background: #fdf6e3;
+}
+.pro-note__title {
+  margin: 0 0 0.2rem;
+  font-weight: 700;
+}
+.pro-note p {
+  margin: 0.2rem 0 0;
+}
+.sources {
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+  margin: 1rem 0 0;
+}
+
+/* Tabel data */
+.table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+  min-width: 460px;
+}
+.data-table th,
+.data-table td {
+  border: 1px solid var(--c-border);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+.data-table thead th {
+  background: var(--c-primary-soft);
+}
+
+/* Kalkulator */
+.calc {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  padding: 1rem 1.1rem 1.2rem;
+  margin: 1rem 0;
+}
+.calc-desc {
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
+}
+.calc fieldset,
+.calc-methods {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem 0.8rem;
+  margin: 0 0 0.9rem;
+}
+.calc legend,
+.calc-methods legend {
+  font-weight: 600;
+  padding: 0 0.4rem;
+  font-size: 0.92rem;
+}
+.calc-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+}
+.calc-field {
+  margin: 0 0 0.9rem;
+}
+.calc-field label,
+.calc-field > span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.3rem;
+}
+.calc-field small,
+.calc fieldset small {
+  display: block;
+  color: var(--c-text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+.calc-field--row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.calc-field--row > span {
+  margin: 0;
+}
+.calc-field--row input {
+  width: auto;
+  flex: 1 1 90px;
+  min-width: 80px;
+}
+.calc input[type='number'],
+.calc input[type='date'] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.45rem 0.6rem;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  background: #fff;
+}
+.calc input:focus {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 1px;
+  border-color: var(--c-primary);
+}
+.checks {
+  display: grid;
+  gap: 0.4rem;
+}
+.checks label,
+.calc-methods label,
+.calc fieldset label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.checks input,
+.calc fieldset input[type='checkbox'],
+.calc fieldset input[type='radio'] {
+  margin-top: 0.2rem;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+.calc-result {
+  margin-top: 0.4rem;
+  padding: 0.8rem 0.9rem;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+}
+.calc-result__hint {
+  margin: 0;
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+}
+.calc-out {
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.calc-out > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.6rem;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--c-border);
+  padding-bottom: 0.4rem;
+}
+.calc-out > div:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.calc-out dt {
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+.calc-out dd {
+  margin: 0;
+  text-align: right;
+  flex: 1 1 auto;
+}
+.calc-out__sub {
+  color: var(--c-text-muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+/* Tab kalkulator */
+.pro-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.2rem 0 0;
+}
+.pro-tab {
+  padding: 0.45rem 0.9rem;
+  border: 1.5px solid var(--c-border);
+  border-radius: 999px;
+  background: var(--c-surface);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--c-text-muted);
+}
+.pro-tab.is-active {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #fff;
+}
+
+/* Badge hasil risiko */
+.risk-badge {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+}
+.risk-badge--high {
+  background: #fdecea;
+  color: #b3261e;
+}
+.risk-badge--low {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+.risk-badge--mid {
+  background: #fff4e5;
+  color: #9a6700;
+}
+
 /* —— Cetak (handout) —— */
 @media print {
   .site-header,

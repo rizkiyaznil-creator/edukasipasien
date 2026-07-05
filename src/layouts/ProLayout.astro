@@ -1,0 +1,31 @@
+---
+// Layout untuk halaman profesional (/profesional/*).
+// Membungkus BaseLayout dan menambahkan label "untuk tenaga kesehatan"
+// serta catatan disclaimer klinis di atas dan bawah konten.
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="pro-banner" role="note">
+    <span class="pro-banner__tag">Untuk Tenaga Kesehatan</span>
+    <span class="pro-banner__text">
+      Ringkasan &amp; alat bantu praktik untuk SpOG, residen, dan dokter umum.
+      <strong>Alat bantu — bukan pengganti penilaian klinis atau pedoman resmi
+      terbaru.</strong>
+    </span>
+  </div>
+
+  <slot />
+
+  <p class="pro-footnote">
+    Sumber dan versi pedoman dicantumkan pada tiap halaman. Selalu verifikasi dengan
+    pedoman resmi yang berlaku (mis. WHO, Kemenkes/POGI/HOGI, FIGO). Hasil kalkulator
+    hanya alat bantu dan harus ditafsirkan dalam konteks klinis pasien.
+  </p>
+</BaseLayout>

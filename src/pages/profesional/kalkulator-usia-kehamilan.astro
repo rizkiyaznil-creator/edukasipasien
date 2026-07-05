@@ -1,0 +1,188 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+import { withBase } from '../../lib/base';
+---
+
+<ProLayout
+  title="Kalkulator Usia Kehamilan & Taksiran Persalinan"
+  description="Hitung usia kehamilan (UK) dan taksiran persalinan (HPL) dari HPHT (Naegele) atau dari usia kehamilan pada pemeriksaan USG."
+>
+  <p class="eyebrow">Kalkulator · Obstetri</p>
+  <h1>Usia Kehamilan &amp; Taksiran Persalinan</h1>
+  <p class="lead">
+    Hitung <strong>usia kehamilan (UK)</strong> dan <strong>taksiran persalinan (HPL)</strong>
+    dari <strong>HPHT</strong> (rumus Naegele, dengan koreksi panjang siklus) atau dari
+    <strong>UK yang diketahui pada USG</strong>.
+  </p>
+
+  <div class="calc">
+    <fieldset class="calc-methods">
+      <legend>Metode</legend>
+      <label><input type="radio" name="metode" value="hpht" checked /> Dari HPHT</label>
+      <label><input type="radio" name="metode" value="usg" /> Dari USG (UK pada tanggal)</label>
+    </fieldset>
+
+    <div id="panel-hpht" class="calc-panel">
+      <div class="calc-field">
+        <label for="hpht">HPHT (hari pertama haid terakhir)</label>
+        <input type="date" id="hpht" />
+      </div>
+      <div class="calc-field">
+        <label for="siklus">Panjang siklus (hari)</label>
+        <input type="number" id="siklus" value="28" min="20" max="45" step="1" />
+        <small>Default 28. Koreksi Naegele = HPHT + 280 hari + (siklus − 28).</small>
+      </div>
+    </div>
+
+    <div id="panel-usg" class="calc-panel" hidden>
+      <div class="calc-field">
+        <label for="tglusg">Tanggal USG</label>
+        <input type="date" id="tglusg" />
+      </div>
+      <div class="calc-field calc-field--row">
+        <span>UK saat USG</span>
+        <input type="number" id="uk-minggu" min="0" max="42" step="1" placeholder="minggu" aria-label="UK minggu" />
+        <input type="number" id="uk-hari" min="0" max="6" step="1" placeholder="hari" aria-label="UK hari" />
+      </div>
+    </div>
+
+    <div class="calc-field">
+      <label for="tglref">Hitung UK per tanggal</label>
+      <input type="date" id="tglref" />
+      <small>Default hari ini. HPL tidak bergantung pada tanggal ini.</small>
+    </div>
+
+    <div id="hasil" class="calc-result" aria-live="polite">
+      <p class="calc-result__hint">Isi data di atas untuk melihat hasil.</p>
+    </div>
+  </div>
+
+  <div class="pro-note pro-note--info">
+    <p class="pro-note__title">Catatan klinis</p>
+    <p>
+      Penanggalan paling akurat adalah <strong>USG trimester pertama (CRL)</strong>.
+      HPHT andal bila siklus teratur dan HPHT pasti. Bila selisih UK-HPHT dengan UK-USG
+      melebihi ambang penanggalan (mis. &gt; 5–7 hari pada trimester pertama), gunakan
+      penanggalan USG sesuai pedoman.
+    </p>
+  </div>
+
+  <p><a href={withBase('/profesional')}>← Kembali ke Untuk Dokter</a></p>
+</ProLayout>
+
+<script>
+  const $ = (id: string) => document.getElementById(id) as HTMLElement | null;
+
+  // Parse "YYYY-MM-DD" menjadi milidetik UTC (hindari isu zona waktu/DST).
+  const toUTC = (v: string): number | null => {
+    if (!v) return null;
+    const [y, m, d] = v.split('-').map(Number);
+    if (!y || !m || !d) return null;
+    return Date.UTC(y, m - 1, d);
+  };
+  const DAY = 86400000;
+  const fmt = (ms: number) =>
+    new Intl.DateTimeFormat('id-ID', { dateStyle: 'full', timeZone: 'UTC' }).format(
+      new Date(ms)
+    );
+  const todayUTC = () => {
+    const n = new Date();
+    return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate());
+  };
+  const isoToday = () => {
+    const n = new Date();
+    const p = (x: number) => String(x).padStart(2, '0');
+    return `${n.getFullYear()}-${p(n.getMonth() + 1)}-${p(n.getDate())}`;
+  };
+
+  const hphtEl = $('hpht') as HTMLInputElement;
+  const siklusEl = $('siklus') as HTMLInputElement;
+  const tglusgEl = $('tglusg') as HTMLInputElement;
+  const ukMgEl = $('uk-minggu') as HTMLInputElement;
+  const ukHrEl = $('uk-hari') as HTMLInputElement;
+  const tglrefEl = $('tglref') as HTMLInputElement;
+  const hasilEl = $('hasil') as HTMLElement;
+  const panelHpht = $('panel-hpht') as HTMLElement;
+  const panelUsg = $('panel-usg') as HTMLElement;
+
+  // Default tanggal referensi = hari ini (di sisi klien).
+  if (tglrefEl) tglrefEl.value = isoToday();
+
+  const method = () =>
+    (document.querySelector('input[name="metode"]:checked') as HTMLInputElement)?.value ||
+    'hpht';
+
+  function render(html: string) {
+    hasilEl.innerHTML = html;
+  }
+
+  function compute() {
+    const ref = toUTC(tglrefEl.value) ?? todayUTC();
+
+    // "datingStart" = titik nol penanggalan (setara HPHT terkoreksi).
+    let datingStart: number | null = null;
+
+    if (method() === 'hpht') {
+      const lmp = toUTC(hphtEl.value);
+      if (lmp === null) {
+        render('<p class="calc-result__hint">Masukkan tanggal HPHT.</p>');
+        return;
+      }
+      const siklus = Math.min(45, Math.max(20, Number(siklusEl.value) || 28));
+      datingStart = lmp + (siklus - 28) * DAY;
+    } else {
+      const usg = toUTC(tglusgEl.value);
+      const wk = Number(ukMgEl.value);
+      const dy = Number(ukHrEl.value);
+      if (usg === null || (!ukMgEl.value && !ukHrEl.value)) {
+        render('<p class="calc-result__hint">Masukkan tanggal USG dan UK saat USG.</p>');
+        return;
+      }
+      const ukDays = (wk || 0) * 7 + (dy || 0);
+      datingStart = usg - ukDays * DAY;
+    }
+
+    const edd = datingStart + 280 * DAY;
+    const gaDays = Math.round((ref - datingStart) / DAY);
+
+    if (gaDays < 0) {
+      render('<p class="calc-result__hint">Tanggal referensi mendahului awal kehamilan — periksa kembali input.</p>');
+      return;
+    }
+
+    const w = Math.floor(gaDays / 7);
+    const d = gaDays % 7;
+    const trimester = gaDays < 98 ? 1 : gaDays < 196 ? 2 : 3; // <14mgg, 14–27+6, ≥28mgg
+    const toEdd = Math.round((edd - ref) / DAY);
+    const sisa =
+      toEdd > 0
+        ? `${toEdd} hari menuju HPL`
+        : toEdd === 0
+        ? 'Hari ini adalah HPL'
+        : `${-toEdd} hari melewati HPL`;
+
+    render(`
+      <dl class="calc-out">
+        <div><dt>Taksiran Persalinan (HPL)</dt><dd>${fmt(edd)}</dd></div>
+        <div><dt>Usia Kehamilan</dt><dd><strong>${w} minggu ${d} hari</strong> <span class="calc-out__sub">(per ${fmt(ref)})</span></dd></div>
+        <div><dt>Trimester</dt><dd>${trimester}</dd></div>
+        <div><dt>Perkiraan</dt><dd>${sisa}</dd></div>
+      </dl>
+    `);
+  }
+
+  function switchPanel() {
+    const m = method();
+    panelHpht.hidden = m !== 'hpht';
+    panelUsg.hidden = m !== 'usg';
+    compute();
+  }
+
+  for (const el of [hphtEl, siklusEl, tglusgEl, ukMgEl, ukHrEl, tglrefEl]) {
+    el?.addEventListener('input', compute);
+  }
+  for (const r of Array.from(document.querySelectorAll('input[name="metode"]'))) {
+    r.addEventListener('change', switchPanel);
+  }
+  switchPanel();
+</script>
