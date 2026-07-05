@@ -15,6 +15,16 @@ const {
 } = Astro.props;
 const fullTitle = title === 'Medan Gyn Surgery' ? title : `${title} — Medan Gyn Surgery`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Gerbang ruang klinis: bila halaman /profesional dibuka tanpa konfirmasi sesi ini,
+// tandai <html> agar kontennya disembunyikan sebelum tampil (mencegah "kedip").
+const proPrefix = withBase('/profesional').replace(/\/$/, '');
+const proGateHeadScript =
+  '(function(){try{var p=(location.pathname||"/").replace(/\\/+$/,"")||"/";' +
+  'var pre=' +
+  JSON.stringify(proPrefix) +
+  ';if((p===pre||p.indexOf(pre+"/")===0)&&sessionStorage.getItem("pro-ack")!=="1"){' +
+  'document.documentElement.classList.add("pro-gated");}}catch(e){}})();';
 ---
 
 <!doctype html>
@@ -43,6 +53,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="id_ID" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline set:html={proGateHeadScript} />
     <Analytics />
   </head>
   <body>

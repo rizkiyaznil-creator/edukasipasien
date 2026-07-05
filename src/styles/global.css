@@ -1126,6 +1126,17 @@ a.pro-card:active {
   margin-top: 1rem;
 }
 
+/* Gerbang ruang klinis: sembunyikan konten & tampilkan modal sampai dikonfirmasi */
+html.pro-gated #main {
+  display: none;
+}
+html.pro-gated body {
+  overflow: hidden;
+}
+html.pro-gated #pro-gate[hidden] {
+  display: flex;
+}
+
 /* —— Cetak (handout) —— */
 @media print {
   .site-header,

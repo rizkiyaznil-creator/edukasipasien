@@ -93,35 +93,91 @@ const isActive = (href: string) =>
 <script>
   const overlay = document.getElementById('pro-gate');
   const go = document.getElementById('pro-gate-go') as HTMLAnchorElement | null;
+  const html = document.documentElement;
+  const HOME = import.meta.env.BASE_URL || '/';
+  const acked = () => {
+    try {
+      return sessionStorage.getItem('pro-ack') === '1';
+    } catch {
+      return false;
+    }
+  };
+  const setAck = () => {
+    try {
+      sessionStorage.setItem('pro-ack', '1');
+    } catch {
+      /* abaikan */
+    }
+  };
+
   if (overlay && go) {
     let lastFocus: HTMLElement | null = null;
-    const open = (href: string) => {
+
+    const openNav = (href: string) => {
+      go.dataset.mode = 'nav';
       go.setAttribute('href', href);
       overlay.hidden = false;
       document.body.style.overflow = 'hidden';
       lastFocus = document.activeElement as HTMLElement;
       go.focus();
     };
-    const close = () => {
+    const closeNav = () => {
       overlay.hidden = true;
       document.body.style.overflow = '';
       lastFocus?.focus();
     };
+
+    // Mode gerbang: halaman /profesional dibuka langsung tanpa konfirmasi sesi ini.
+    if (html.classList.contains('pro-gated')) {
+      go.dataset.mode = 'gate';
+      go.setAttribute('href', '#');
+      overlay.hidden = false;
+      document.body.style.overflow = 'hidden';
+      go.focus();
+    }
+
+    // Tombol konfirmasi ("Ya, lanjutkan")
+    go.addEventListener('click', (e) => {
+      if (go.dataset.mode === 'gate') {
+        e.preventDefault();
+        setAck();
+        html.classList.remove('pro-gated');
+        overlay.hidden = true;
+        document.body.style.overflow = '';
+      } else {
+        // mode nav: tandai lalu biarkan navigasi tautan berjalan
+        setAck();
+      }
+    });
+
+    // Intersepsi klik menu "Dokter"
     for (const g of Array.from(
       document.querySelectorAll<HTMLAnchorElement>('[data-pro-gate]')
     )) {
       g.addEventListener('click', (e) => {
+        if (acked()) return; // sudah konfirmasi sesi ini → lanjut langsung
         e.preventDefault();
-        open(g.getAttribute('href') || '#');
+        openNav(g.getAttribute('href') || HOME);
       });
     }
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) close();
-    });
+
+    // "Batal" / menolak
+    const cancel = () => {
+      if (go.dataset.mode === 'gate') {
+        location.href = HOME; // menolak di halaman pro → kembali ke Beranda
+      } else {
+        closeNav();
+      }
+    };
     for (const c of Array.from(overlay.querySelectorAll('[data-pro-cancel]')))
-      c.addEventListener('click', close);
+      c.addEventListener('click', cancel);
+
+    // Esc / klik area luar: hanya di mode nav (dinonaktifkan di mode gerbang).
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay && go.dataset.mode !== 'gate') closeNav();
+    });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !overlay.hidden) close();
+      if (e.key === 'Escape' && !overlay.hidden && go.dataset.mode !== 'gate') closeNav();
     });
   }
 </script>
