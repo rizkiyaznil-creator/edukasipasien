@@ -1,0 +1,77 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+import { withBase } from '../../lib/base';
+---
+
+<ProLayout
+  title="Follow-up β-hCG Pasca Evakuasi Mola"
+  description="Referensi klinis: protokol pemantauan β-hCG serial setelah evakuasi mola hidatidosa (komplet vs parsial), kriteria FIGO untuk GTN pascamola, dan kontrasepsi selama pemantauan."
+>
+  <p class="eyebrow">Referensi · Ginekologi Onkologi</p>
+  <h1>Follow-up β-hCG Pasca Evakuasi Mola</h1>
+  <p class="lead">
+    Pemantauan <strong>β-hCG serum serial</strong> setelah evakuasi mola hidatidosa
+    bertujuan mendeteksi dini <strong>neoplasia trofoblas gestasional (GTN)
+    pascamola</strong>. Risiko GTN ± <strong>15–20% pada mola komplet</strong> dan
+    <strong>&lt; 1–5% pada mola parsial</strong>.
+  </p>
+
+  <h2>Jadwal pemantauan (FIGO)</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Tahap</th><th>Mola komplet</th><th>Mola parsial</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sampai β-hCG normal</strong></td>
+          <td colspan="2">β-hCG kuantitatif <strong>tiap minggu</strong> hingga hasil <strong>normal/tak terdeteksi</strong> (umumnya 3 nilai mingguan normal berturut).</td>
+        </tr>
+        <tr>
+          <td><strong>Setelah normal</strong></td>
+          <td>Pantau <strong>tiap bulan selama 6 bulan</strong>.</td>
+          <td>Cukup <strong>satu nilai konfirmasi</strong> normal berikutnya, lalu pemantauan dapat dihentikan.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="calc-desc">
+    Gunakan <strong>assay kuantitatif yang sama</strong> untuk konsistensi. Waspadai
+    <em>phantom hCG</em> (positif palsu) bila hasil tidak sesuai gambaran klinis.
+  </p>
+
+  <h2>Kriteria FIGO — diagnosis GTN pascamola</h2>
+  <div class="pro-note pro-note--warn">
+    <p class="pro-note__title">GTN ditegakkan bila salah satu terpenuhi</p>
+    <ol class="pro-crit">
+      <li><strong>Plateau</strong> β-hCG (±10%) pada <strong>4 nilai</strong> selama <strong>≥ 3 minggu</strong> (hari 1, 7, 14, 21).</li>
+      <li><strong>Kenaikan</strong> β-hCG <strong>&gt; 10%</strong> pada <strong>3 nilai</strong> selama <strong>≥ 2 minggu</strong> (hari 1, 7, 14).</li>
+      <li>β-hCG <strong>masih terdeteksi &gt; 6 bulan</strong> setelah evakuasi.</li>
+      <li>Diagnosis histologik <strong>koriokarsinoma</strong>.</li>
+    </ol>
+  </div>
+
+  <h2>Kontrasepsi &amp; kehamilan</h2>
+  <ul>
+    <li><strong>Hindari hamil</strong> selama masa pemantauan — kehamilan baru menaikkan hCG dan mengaburkan surveilans.</li>
+    <li>Gunakan <strong>kontrasepsi andal</strong>; <strong>kontrasepsi hormonal (mis. pil kombinasi) aman</strong> dipakai.</li>
+    <li><strong>Tunda pemasangan AKDR/IUD</strong> hingga β-hCG normal (risiko perforasi bila ada penyakit invasif).</li>
+    <li>Setelah pemantauan selesai, kehamilan berikutnya umumnya aman; sarankan USG dini untuk memastikan kehamilan normal.</li>
+  </ul>
+
+  <h2>Bila GTN tegak</h2>
+  <ul>
+    <li><strong>Rujuk</strong> ke ginekologi-onkologi; lakukan <strong>penentuan stadium anatomik FIGO (I–IV)</strong> dan <strong>skor prognostik WHO/FIGO</strong>.</li>
+    <li><strong>Risiko rendah</strong> → kemoterapi agen tunggal (metotreksat atau aktinomisin-D).</li>
+    <li><strong>Risiko tinggi</strong> → kemoterapi multiagen (mis. EMA-CO).</li>
+    <li>Lihat juga topik pasien <a href={withBase('/topik/mola-hidatidosa')}>Mola Hidatidosa</a>. <em>(Kalkulator skor prognostik GTN menyusul.)</em></li>
+  </ul>
+
+  <p class="sources">
+    <strong>Sumber:</strong>
+    Ngan HYS, dkk. FIGO — <em>Update on the diagnosis and management of gestational trophoblastic disease</em> (Int J Gynecol Obstet, 2018);
+    RCOG/Charing Cross &amp; New England Trophoblastic Disease Center — protokol surveilans.
+  </p>
+
+  <p><a href={withBase('/profesional')}>← Kembali ke Untuk Dokter</a></p>
+</ProLayout>

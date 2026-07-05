@@ -1,0 +1,74 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+import { withBase } from '../../lib/base';
+---
+
+<ProLayout
+  title="Skrining USG Trimester 1, 2, & 3"
+  description="Referensi klinis: tujuan dan komponen utama pemeriksaan USG obstetri pada trimester 1 (penanggalan & NT), trimester 2 (anomali/anatomi), dan trimester 3 (pertumbuhan & kesejahteraan)."
+>
+  <p class="eyebrow">Referensi · Obstetri</p>
+  <h1>Skrining USG Trimester 1, 2, &amp; 3</h1>
+  <p class="lead">
+    Ringkasan <strong>tujuan</strong> dan <strong>komponen utama</strong> USG obstetri
+    tiap trimester (berbasis pedoman <strong>ISUOG</strong>). Waktu &amp; indikasi dapat
+    disesuaikan dengan protokol setempat (POGI) dan kondisi klinis.
+  </p>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Trimester</th><th>Waktu lazim</th><th>Tujuan utama</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>11–13⁺⁶ minggu (CRL 45–84 mm)</td><td>Viabilitas, penanggalan, jumlah janin &amp; korionisitas, skrining aneuploidi (NT)</td></tr>
+        <tr><td><strong>2</strong></td><td>18–22 minggu</td><td>Survei anatomi/anomali janin, biometri, plasenta, cairan amnion</td></tr>
+        <tr><td><strong>3</strong></td><td>± 28–36 minggu</td><td>Pertumbuhan &amp; kesejahteraan janin, presentasi, Doppler bila terindikasi</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Trimester 1 — penanggalan &amp; NT</h2>
+  <ul>
+    <li><strong>Viabilitas</strong> &amp; lokasi kehamilan; <strong>jumlah janin</strong> dan <strong>korionisitas/amnionisitas</strong> (paling akurat pada trimester ini).</li>
+    <li><strong>Penanggalan</strong> dengan <strong>CRL</strong> — metode paling akurat menentukan usia kehamilan.</li>
+    <li><strong>Nuchal translucency (NT)</strong> pada 11–13⁺⁶ minggu untuk risiko aneuploidi; dipadukan uji kombinasi (PAPP-A, free β-hCG) ± tulang hidung, ductus venosus.</li>
+    <li><strong>Anatomi dini</strong>: deteksi anomali mayor tertentu.</li>
+    <li><strong>Skrining risiko preeklamsia</strong> trimester 1 (MAP, Doppler arteri uterina, PlGF, PAPP-A) sesuai program.</li>
+    <li>Nilai <strong>uterus &amp; adneksa</strong>.</li>
+  </ul>
+
+  <h2>Trimester 2 — anomali (anatomi)</h2>
+  <ul>
+    <li><strong>Survei anatomi terperinci</strong>: kepala/otak, wajah, tulang belakang, <strong>jantung (4 ruang + outflow)</strong>, toraks, abdomen, ginjal &amp; kandung kemih, dinding perut, ekstremitas.</li>
+    <li><strong>Biometri</strong> (BPD, HC, AC, FL) → taksiran berat janin &amp; pola pertumbuhan.</li>
+    <li><strong>Plasenta</strong> (letak — nilai <em>previa</em>) dan <strong>cairan amnion</strong>.</li>
+    <li><strong>Panjang serviks</strong> untuk risiko persalinan preterm (pada indikasi/skrining).</li>
+    <li><em>Soft markers</em> aneuploidi.</li>
+  </ul>
+
+  <h2>Trimester 3 — pertumbuhan &amp; kesejahteraan</h2>
+  <ul>
+    <li><strong>Pertumbuhan</strong>: biometri &amp; taksiran berat janin + persentil — deteksi <strong>PJT/IUGR</strong> atau makrosomia.</li>
+    <li><strong>Cairan amnion</strong> (AFI / kantong tunggal terdalam).</li>
+    <li><strong>Plasenta</strong> (letak &amp; maturitas; konfirmasi previa) dan <strong>presentasi</strong> janin.</li>
+    <li><strong>Doppler</strong> (arteri umbilikalis, MCA, rasio serebroplasenta; arteri uterina) pada kehamilan berisiko/PJT.</li>
+    <li><strong>Profil biofisik (BPP)</strong> bila terindikasi.</li>
+  </ul>
+
+  <div class="pro-note pro-note--info">
+    <p class="pro-note__title">Catatan</p>
+    <p>
+      Ini adalah <strong>kerangka skrining standar</strong>; pemeriksaan tambahan
+      (mis. ekokardiografi janin, Doppler serial, serviks) dilakukan atas indikasi.
+      Kualitas bergantung pada usia kehamilan, posisi janin, dan faktor ibu.
+    </p>
+  </div>
+
+  <p class="sources">
+    <strong>Sumber:</strong> ISUOG Practice Guidelines — first-trimester scan; mid-trimester
+    fetal anatomy scan; fetal biometry &amp; growth. Sesuaikan dengan pedoman POGI/lokal.
+  </p>
+
+  <p><a href={withBase('/profesional')}>← Kembali ke Untuk Dokter</a></p>
+</ProLayout>

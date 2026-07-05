@@ -863,6 +863,13 @@ a.pro-card:active {
 .pro-note p {
   margin: 0.2rem 0 0;
 }
+.pro-crit {
+  margin: 0.4rem 0 0;
+  padding-left: 1.3rem;
+}
+.pro-crit li {
+  margin: 0.3rem 0;
+}
 .sources {
   font-size: 0.82rem;
   color: var(--c-text-muted);
