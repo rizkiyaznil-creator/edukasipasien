@@ -7,7 +7,7 @@ const links = [
   { href: '/kamus', label: 'Kamus' },
   { href: '/tentang', label: 'Tentang' },
   { href: '/hubungi', label: 'Hubungi' },
-  { href: '/profesional', label: 'Untuk Dokter' },
+  { href: '/profesional', label: 'Dokter' },
 ];
 // Buang base path dari pathname agar perbandingan menu aktif tetap benar
 // (mis. "/edukasipasien/kamus" -> "/kamus").
@@ -39,7 +39,11 @@ const isActive = (href: string) =>
     <nav class="nav" aria-label="Navigasi utama">
       {
         links.map((l) => (
-          <a href={withBase(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>
+          <a
+            href={withBase(l.href)}
+            aria-current={isActive(l.href) ? 'page' : undefined}
+            data-pro-gate={l.href === '/profesional' ? '' : undefined}
+          >
             {l.label}
           </a>
         ))
@@ -51,8 +55,73 @@ const isActive = (href: string) =>
   </div>
 </header>
 
+<div class="modal-overlay" id="pro-gate" hidden>
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="pro-gate-title"
+    aria-describedby="pro-gate-desc"
+  >
+    <h2 class="modal__title" id="pro-gate-title">Untuk Tenaga Kesehatan</h2>
+    <div class="modal__body" id="pro-gate-desc">
+      <p>
+        Bagian ini berisi ringkasan singkat dan <strong>alat bantu praktik</strong>
+        yang ditujukan untuk <strong>tenaga medis profesional</strong> (dokter spesialis,
+        residen, dan dokter umum).
+      </p>
+      <p>
+        Seluruh materi dan kalkulator di dalamnya adalah <strong>alat bantu</strong> —
+        <strong>bukan pengganti penilaian klinis</strong> maupun <strong>pedoman resmi
+        terbaru</strong>.
+      </p>
+      <p class="modal__q"><strong>Apakah Anda seorang tenaga medis profesional?</strong></p>
+    </div>
+    <div class="modal__actions">
+      <button type="button" class="btn btn--ghost" data-pro-cancel>Batal</button>
+      <a class="btn" id="pro-gate-go" href="#">Ya, saya tenaga kesehatan — lanjutkan</a>
+    </div>
+  </div>
+</div>
+
 <style>
   .header-search {
     padding-bottom: 0.6rem;
   }
 </style>
+
+<script>
+  const overlay = document.getElementById('pro-gate');
+  const go = document.getElementById('pro-gate-go') as HTMLAnchorElement | null;
+  if (overlay && go) {
+    let lastFocus: HTMLElement | null = null;
+    const open = (href: string) => {
+      go.setAttribute('href', href);
+      overlay.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lastFocus = document.activeElement as HTMLElement;
+      go.focus();
+    };
+    const close = () => {
+      overlay.hidden = true;
+      document.body.style.overflow = '';
+      lastFocus?.focus();
+    };
+    for (const g of Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('[data-pro-gate]')
+    )) {
+      g.addEventListener('click', (e) => {
+        e.preventDefault();
+        open(g.getAttribute('href') || '#');
+      });
+    }
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) close();
+    });
+    for (const c of Array.from(overlay.querySelectorAll('[data-pro-cancel]')))
+      c.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !overlay.hidden) close();
+    });
+  }
+</script>
