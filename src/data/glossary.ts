@@ -1132,6 +1132,40 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Tindakan mengangkat polip. Polip serviks sering dapat diangkat di poliklinik, sedangkan polip di dalam rahim umumnya diangkat melalui histeroskopi. Jaringannya kemudian diperiksa di laboratorium.',
   },
+
+  // ——— Pola Makan & Gizi ———
+  {
+    term: 'Planetary Health Diet',
+    slug: 'planetary-health-diet',
+    category: 'Umum',
+    aliases: ['pola makan sehat berkelanjutan', 'diet eat-lancet', 'phd'],
+    definition:
+      'Pola makan yang dianjurkan Komisi EAT-Lancet: berlimpah sayur, buah, biji-bijian utuh, dan kacang-kacangan, dengan sedikit daging — dirancang menyehatkan tubuh sekaligus ramah lingkungan.',
+  },
+  {
+    term: 'Biji-bijian Utuh (Whole Grain)',
+    slug: 'biji-bijian-utuh',
+    category: 'Umum',
+    aliases: ['whole grain', 'gandum utuh', 'serealia utuh', 'karbohidrat kompleks'],
+    definition:
+      'Biji-bijian yang masih utuh atau hanya sedikit diproses sehingga kaya serat, misalnya beras merah/tumbuk, jagung, gandum utuh, dan oat. Lebih menyehatkan daripada karbohidrat olahan seperti nasi putih atau tepung putih.',
+  },
+  {
+    term: 'Lemak Tak Jenuh',
+    slug: 'lemak-tak-jenuh',
+    category: 'Umum',
+    aliases: ['lemak sehat', 'minyak nabati', 'unsaturated fat'],
+    definition:
+      'Jenis lemak yang lebih menyehatkan, terutama dari sumber nabati dan ikan (misalnya minyak zaitun, minyak kanola, alpukat, kacang, dan ikan). Berbeda dari lemak jenuh dan lemak trans yang perlu dibatasi.',
+  },
+  {
+    term: 'Makanan Ultraproses',
+    slug: 'makanan-ultraproses',
+    category: 'Umum',
+    aliases: ['ultra-processed food', 'upf', 'makanan olahan'],
+    definition:
+      'Produk hasil banyak proses industri yang biasanya tinggi gula, garam, lemak tidak sehat, dan bahan tambahan — misalnya mi instan, minuman bersoda, sosis/nugget, dan camilan kemasan. Sebaiknya dibatasi.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
