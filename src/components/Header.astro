@@ -36,7 +36,17 @@ const isActive = (href: string) =>
       </svg>
       <span>Medan Gyn Surgery<small>Sahabat Ginekologi Onkologi</small></span>
     </a>
-    <nav class="nav" aria-label="Navigasi utama">
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-controls="site-nav"
+      aria-expanded="false"
+      aria-label="Buka menu"
+    >
+      <svg class="ic-open" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Navigasi utama">
       {
         links.map((l) => (
           <a
@@ -178,6 +188,28 @@ const isActive = (href: string) =>
     });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !overlay.hidden && go.dataset.mode !== 'gate') closeNav();
+    });
+  }
+
+  // —— Menu hamburger (mobile) ——
+  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement | null;
+  const nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    const setOpen = (open: boolean) => {
+      nav.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+    };
+    toggle.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
+    for (const a of Array.from(nav.querySelectorAll('a')))
+      a.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    document.addEventListener('click', (e) => {
+      const t = e.target as Node;
+      if (nav.classList.contains('is-open') && !nav.contains(t) && !toggle.contains(t))
+        setOpen(false);
     });
   }
 </script>
