@@ -2,6 +2,8 @@
 // Ilustrasi ORISINAL "Piring Makan Sehat" (mengacu pada Planetary Health Diet /
 // EAT-Lancet). Diagram lingkaran buatan sendiri untuk menggambarkan proporsi
 // anjuran — bukan grafik resmi EAT-Lancet. Proporsi bersifat perkiraan/ilustratif.
+// Tiap bagian diberi nomor (di potongan & di legenda) agar tetap terbaca oleh
+// pengguna dengan buta warna, tidak hanya mengandalkan warna.
 const segments = [
   { label: 'Sayur', color: '#4f9d5d', pct: 30 },
   { label: 'Buah', color: '#e8913f', pct: 20 },
@@ -15,20 +17,21 @@ const segments = [
 const CX = 160;
 const CY = 160;
 const R = 150;
-const polar = (deg: number) => {
+const polar = (deg: number, r: number) => {
   const a = ((deg - 90) * Math.PI) / 180;
-  return [CX + R * Math.cos(a), CY + R * Math.sin(a)] as const;
+  return [CX + r * Math.cos(a), CY + r * Math.sin(a)] as const;
 };
 let acc = 0;
-const wedges = segments.map((s) => {
+const wedges = segments.map((s, i) => {
   const start = (acc / 100) * 360;
   acc += s.pct;
   const end = (acc / 100) * 360;
-  const [x1, y1] = polar(start);
-  const [x2, y2] = polar(end);
+  const [x1, y1] = polar(start, R);
+  const [x2, y2] = polar(end, R);
   const large = end - start > 180 ? 1 : 0;
   const d = `M ${CX} ${CY} L ${x1.toFixed(2)} ${y1.toFixed(2)} A ${R} ${R} 0 ${large} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} Z`;
-  return { color: s.color, d };
+  const [lx, ly] = polar((start + end) / 2, R * 0.64);
+  return { n: i + 1, color: s.color, d, lx, ly };
 });
 ---
 
@@ -38,17 +41,32 @@ const wedges = segments.map((s) => {
     <desc id="php-d">
       Kira-kira separuh piring berisi sayur dan buah; separuh lainnya terbagi untuk
       biji-bijian utuh, protein nabati, sedikit protein hewani, dan lemak sehat, dengan
-      daging merah paling sedikit.
+      daging merah paling sedikit. Setiap bagian bernomor sesuai daftar keterangan.
     </desc>
     <circle cx={CX} cy={CY} r={R + 7} fill="#ffffff" stroke="#e6e0d4" stroke-width="6" />
     {wedges.map((w) => <path d={w.d} fill={w.color} stroke="#ffffff" stroke-width="2" />)}
+    {
+      wedges.map((w) => (
+        <text
+          x={w.lx.toFixed(1)}
+          y={w.ly.toFixed(1)}
+          class="phplate__num"
+          text-anchor="middle"
+          dominant-baseline="central"
+        >
+          {w.n}
+        </text>
+      ))
+    }
   </svg>
 
   <ul class="phplate__legend">
     {
-      segments.map((s) => (
+      segments.map((s, i) => (
         <li>
-          <span class="phplate__sw" style={`background:${s.color}`} aria-hidden="true" />
+          <span class="phplate__chip" style={`background:${s.color}`} aria-hidden="true">
+            {i + 1}
+          </span>
           <span>{s.label}</span>
         </li>
       ))
@@ -59,7 +77,8 @@ const wedges = segments.map((s) => {
     Kira-kira <strong>separuh piring untuk sayur &amp; buah</strong>; separuh lainnya
     biji-bijian utuh, protein (utamakan nabati), dan lemak sehat — daging merah paling
     sedikit.
-    <span>Ilustrasi proporsi (perkiraan), mengacu pada Planetary Health Diet (EAT-Lancet).</span>
+    <span>Ilustrasi proporsi (perkiraan), mengacu pada Planetary Health Diet (EAT-Lancet).
+    Angka pada tiap bagian cocok dengan nomor di keterangan.</span>
   </figcaption>
 </figure>
 
@@ -81,6 +100,16 @@ const wedges = segments.map((s) => {
     max-width: 230px;
     margin: 0 auto;
   }
+  .phplate__num {
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 19px;
+    fill: #14202b;
+    stroke: #ffffff;
+    stroke-width: 3.4px;
+    paint-order: stroke;
+    stroke-linejoin: round;
+  }
   .phplate__legend {
     list-style: none;
     margin: 0;
@@ -92,14 +121,21 @@ const wedges = segments.map((s) => {
   .phplate__legend li {
     display: flex;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.55rem;
   }
-  .phplate__sw {
-    width: 14px;
-    height: 14px;
-    border-radius: 4px;
+  .phplate__chip {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
     flex: none;
-    margin-top: 0.15rem;
+    margin-top: 0.05rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #14202b;
+    text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff;
   }
   .phplate__cap {
     grid-column: 1 / -1;
