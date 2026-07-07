@@ -1,0 +1,122 @@
+---
+// Ilustrasi ORISINAL "Piring Makan Sehat" (mengacu pada Planetary Health Diet /
+// EAT-Lancet). Diagram lingkaran buatan sendiri untuk menggambarkan proporsi
+// anjuran — bukan grafik resmi EAT-Lancet. Proporsi bersifat perkiraan/ilustratif.
+const segments = [
+  { label: 'Sayur', color: '#4f9d5d', pct: 30 },
+  { label: 'Buah', color: '#e8913f', pct: 20 },
+  { label: 'Biji-bijian utuh', color: '#e3c15c', pct: 18 },
+  { label: 'Protein nabati (tempe, tahu, kacang)', color: '#a9744a', pct: 12 },
+  { label: 'Protein hewani (ikan, unggas, telur, susu)', color: '#7ba7c9', pct: 10 },
+  { label: 'Lemak sehat (minyak nabati)', color: '#cdbf5f', pct: 7 },
+  { label: 'Daging merah & gula — batasi', color: '#c0554e', pct: 3 },
+];
+
+const CX = 160;
+const CY = 160;
+const R = 150;
+const polar = (deg: number) => {
+  const a = ((deg - 90) * Math.PI) / 180;
+  return [CX + R * Math.cos(a), CY + R * Math.sin(a)] as const;
+};
+let acc = 0;
+const wedges = segments.map((s) => {
+  const start = (acc / 100) * 360;
+  acc += s.pct;
+  const end = (acc / 100) * 360;
+  const [x1, y1] = polar(start);
+  const [x2, y2] = polar(end);
+  const large = end - start > 180 ? 1 : 0;
+  const d = `M ${CX} ${CY} L ${x1.toFixed(2)} ${y1.toFixed(2)} A ${R} ${R} 0 ${large} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} Z`;
+  return { color: s.color, d };
+});
+---
+
+<figure class="phplate">
+  <svg viewBox="0 0 320 320" role="img" aria-labelledby="php-t php-d" class="phplate__svg">
+    <title id="php-t">Piring Makan Sehat — Planetary Health Diet</title>
+    <desc id="php-d">
+      Kira-kira separuh piring berisi sayur dan buah; separuh lainnya terbagi untuk
+      biji-bijian utuh, protein nabati, sedikit protein hewani, dan lemak sehat, dengan
+      daging merah paling sedikit.
+    </desc>
+    <circle cx={CX} cy={CY} r={R + 7} fill="#ffffff" stroke="#e6e0d4" stroke-width="6" />
+    {wedges.map((w) => <path d={w.d} fill={w.color} stroke="#ffffff" stroke-width="2" />)}
+  </svg>
+
+  <ul class="phplate__legend">
+    {
+      segments.map((s) => (
+        <li>
+          <span class="phplate__sw" style={`background:${s.color}`} aria-hidden="true" />
+          <span>{s.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <figcaption class="phplate__cap">
+    Kira-kira <strong>separuh piring untuk sayur &amp; buah</strong>; separuh lainnya
+    biji-bijian utuh, protein (utamakan nabati), dan lemak sehat — daging merah paling
+    sedikit.
+    <span>Ilustrasi proporsi (perkiraan), mengacu pada Planetary Health Diet (EAT-Lancet).</span>
+  </figcaption>
+</figure>
+
+<style>
+  .phplate {
+    margin: 1.5rem 0;
+    padding: 1rem 1.1rem 1.1rem;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface);
+    display: grid;
+    grid-template-columns: minmax(170px, 230px) 1fr;
+    gap: 0.9rem 1.3rem;
+    align-items: center;
+  }
+  .phplate__svg {
+    width: 100%;
+    height: auto;
+    max-width: 230px;
+    margin: 0 auto;
+  }
+  .phplate__legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+  .phplate__legend li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .phplate__sw {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    flex: none;
+    margin-top: 0.15rem;
+  }
+  .phplate__cap {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+  }
+  .phplate__cap span {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 560px) {
+    .phplate {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: left;
+    }
+  }
+</style>
