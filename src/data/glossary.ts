@@ -627,6 +627,14 @@ export const glossary: GlossaryEntry[] = [
       'Penurunan jumlah keping darah (trombosit) sehingga tubuh lebih mudah memar atau berdarah.',
   },
   {
+    term: 'Epistaksis (Mimisan)',
+    slug: 'epistaksis',
+    category: 'Efek samping',
+    aliases: ['mimisan', 'perdarahan hidung', 'hidung berdarah'],
+    definition:
+      'Perdarahan dari hidung. Saat kemoterapi dapat muncul karena trombosit (keping darah) menurun sehingga darah lebih sulit membeku, dan karena selaput hidung yang kering.',
+  },
+  {
     term: 'Mukositis',
     slug: 'mukositis',
     category: 'Efek samping',
