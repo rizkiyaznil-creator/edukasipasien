@@ -24,6 +24,9 @@ const topics = defineCollection({
     reviewer: z.string().optional(),
     // Sembunyikan dari daftar jika masih digarap
     draft: z.boolean().default(false),
+    // Kata kunci tambahan agar topik mudah ditemukan lewat pencarian
+    // (mis. istilah awam/sinonim yang tidak ada di judul/ringkasan).
+    keywords: z.array(z.string()).optional(),
   }),
 });
 

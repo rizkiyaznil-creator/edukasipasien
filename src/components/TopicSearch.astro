@@ -3,17 +3,29 @@
 // Daftar topik dirender saat build, lalu difilter di sisi klien setelah >=2 huruf.
 import { getCollection } from 'astro:content';
 import { withBase } from '../lib/base';
+import { glossary } from '../data/glossary';
 
 const topics = (await getCollection('topics', ({ data }) => !data.draft)).sort(
   (a, b) => a.data.order - b.data.order
 );
-const searchItems = topics.map((t) => ({
+const topicItems = topics.map((t) => ({
   title: t.data.title,
   category: t.data.category,
   icon: t.data.icon,
   url: withBase(`/topik/${t.id}`),
-  terms: `${t.data.title} ${t.data.category} ${t.data.summary}`.toLowerCase(),
+  terms: `${t.data.title} ${t.data.category} ${t.data.summary} ${(
+    t.data.keywords ?? []
+  ).join(' ')}`.toLowerCase(),
 }));
+// Sertakan istilah kamus (beserta sinonim/alias) agar bisa ditemukan dari mana saja.
+const glossaryItems = glossary.map((g) => ({
+  title: g.term,
+  category: 'Kamus',
+  icon: '📖',
+  url: withBase(`/kamus#${g.slug}`),
+  terms: `${g.term} ${(g.aliases ?? []).join(' ')}`.toLowerCase(),
+}));
+const searchItems = [...topicItems, ...glossaryItems];
 ---
 
 <div class="topic-search" id="topic-search" role="search">
@@ -22,8 +34,8 @@ const searchItems = topics.map((t) => ({
     id="topic-q"
     type="search"
     autocomplete="off"
-    placeholder="Cari topik… (mis. serviks, kista, kemoterapi)"
-    aria-label="Cari topik"
+    placeholder="Cari topik atau istilah… (mis. mimisan, serviks, biopsi)"
+    aria-label="Cari topik atau istilah"
     aria-controls="topic-results"
     aria-expanded="false"
     aria-autocomplete="list"
@@ -48,7 +60,7 @@ const searchItems = topics.map((t) => ({
         </li>
       ))
     }
-    <li class="tr-empty" hidden>Tidak ada topik yang cocok. Coba kata kunci lain.</li>
+    <li class="tr-empty" hidden>Tidak ada topik atau istilah yang cocok. Coba kata kunci lain.</li>
   </ul>
 </div>
 
@@ -160,6 +172,7 @@ const searchItems = topics.map((t) => ({
       setActive(-1);
     };
 
+    const MAX = 10; // batasi jumlah hasil agar daftar tetap ringkas
     const update = () => {
       const q = input.value.trim().toLowerCase();
       if (q.length < 2) {
@@ -168,7 +181,7 @@ const searchItems = topics.map((t) => ({
       }
       let shown = 0;
       for (const li of items) {
-        const match = (li.dataset.search || '').includes(q);
+        const match = shown < MAX && (li.dataset.search || '').includes(q);
         li.hidden = !match;
         if (match) shown++;
       }
