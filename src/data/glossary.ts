@@ -1178,9 +1178,17 @@ export const glossary: GlossaryEntry[] = [
     term: 'Noretisteron',
     slug: 'noretisteron',
     category: 'Pengobatan',
-    aliases: ['norethisterone', 'norethindrone', 'primolut', 'primolut n', 'penunda haid'],
+    aliases: ['norethisterone', 'norethindrone', 'progestogen oral', 'penunda haid'],
     definition:
-      'Obat golongan progestogen yang dapat menunda datangnya haid; sering dipakai untuk menunda haid saat umrah/haji. Bukan alat kontrasepsi, dan pemakaiannya harus atas anjuran/resep dokter.',
+      'Obat golongan progestogen (tablet) yang dapat menunda datangnya haid; kadang dipakai untuk menunda haid saat umrah/haji. Bukan alat kontrasepsi, dan pemakaiannya harus atas anjuran/resep dokter.',
+  },
+  {
+    term: 'Depo Medroksiprogesteron Asetat (DMPA)',
+    slug: 'dmpa',
+    category: 'Pengobatan',
+    aliases: ['dmpa', 'suntik kb 3 bulan', 'progestogen depot', 'depo progestin', 'medroksiprogesteron asetat'],
+    definition:
+      'Progestogen dalam bentuk suntikan (depot) yang bekerja beberapa bulan dan dapat menekan haid. Umum dipakai sebagai KB suntik, dan pada kebutuhan tertentu dapat dimanfaatkan untuk menekan haid — atas anjuran dokter.',
   },
 ];
 
