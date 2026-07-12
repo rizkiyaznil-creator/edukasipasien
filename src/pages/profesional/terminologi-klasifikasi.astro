@@ -1,0 +1,140 @@
+---
+import ProLayout from '../../layouts/ProLayout.astro';
+import { withBase } from '../../lib/base';
+---
+
+<ProLayout
+  title="Terminologi & Klasifikasi USG Ginekologi (MUSA · IETA · IDEA · Stadium Endometriosis)"
+  description="Ringkasan rujukan: MUSA (adenomiosis), IETA (endometrium), IDEA (endometriosis dalam), dan stadium endometriosis (r-ASRM). Ikhtisar kerangka + sumber asli."
+>
+  <p class="eyebrow">Referensi · Terminologi &amp; Klasifikasi</p>
+  <h1>Terminologi &amp; Klasifikasi USG</h1>
+  <p class="lead">
+    Ikhtisar singkat empat rujukan yang sering dipakai: <strong>MUSA, IETA, IDEA,</strong>
+    dan <strong>stadium endometriosis</strong>. Ini <strong>ringkasan kerangka</strong> —
+    untuk definisi, pengukuran, dan lembar skor lengkap, gunakan <strong>publikasi
+    konsensus/ASRM aslinya</strong>.
+  </p>
+
+  <div class="pro-tabs" role="tablist">
+    <button class="pro-tab is-active" data-tab="musa" role="tab">MUSA</button>
+    <button class="pro-tab" data-tab="ieta" role="tab">IETA</button>
+    <button class="pro-tab" data-tab="idea" role="tab">IDEA</button>
+    <button class="pro-tab" data-tab="stadium" role="tab">Stadium Endometriosis</button>
+  </div>
+
+  <!-- ————— MUSA ————— -->
+  <section id="tab-musa" class="pro-tabpanel" role="tabpanel">
+    <h2>MUSA — Morphological Uterus Sonographic Assessment</h2>
+    <p>
+      Konsensus untuk <strong>menyeragamkan istilah &amp; pelaporan USG miometrium</strong>,
+      terutama fitur <strong>adenomiosis</strong> (dan mendukung pemetaan mioma). Membantu
+      komunikasi antar-pemeriksa dan konsistensi laporan.
+    </p>
+    <p>Secara garis besar, fitur adenomiosis dikelompokkan menjadi:</p>
+    <ul>
+      <li><strong>Langsung:</strong> kista miometrium, pulau hiperekogenik, serta tunas/garis
+        subendometrium ekogenik.</li>
+      <li><strong>Tidak langsung:</strong> penebalan miometrium asimetris, uterus globular,
+        bayangan “seperti kipas” (fan-shaped shadowing), vaskularisasi translesional, serta
+        zona junctional yang ireguler/terputus.</li>
+    </ul>
+    <p>
+      Penilaian <strong>zona junctional</strong> (idealnya multi-bidang/3D) berguna saat
+      diagnosis meragukan; zona yang teratur dan utuh menandakan tidak adanya adenomiosis.
+    </p>
+    <p class="sources"><strong>Sumber:</strong> Van den Bosch T, dkk. — MUSA (<em>UOG</em> 2015);
+      definisi direvisi: Harmsen MJ, dkk. (<em>UOG</em> 2022). Rujuk aslinya untuk definisi &amp; ilustrasi lengkap.</p>
+  </section>
+
+  <!-- ————— IETA ————— -->
+  <section id="tab-ieta" class="pro-tabpanel" role="tabpanel" hidden>
+    <h2>IETA — International Endometrial Tumor Analysis</h2>
+    <p>
+      Konsensus <strong>istilah, definisi, dan pengukuran</strong> untuk menggambarkan
+      <strong>endometrium &amp; lesi intrakavitas</strong> pada USG grayscale, Doppler warna,
+      dan sonohisterografi. Menjadi dasar penilaian risiko patologi endometrium — terutama
+      pada <strong>perdarahan pascamenopause</strong> dan kecurigaan kanker endometrium.
+    </p>
+    <p>Butir yang dinilai secara umum:</p>
+    <ul>
+      <li><strong>Ketebalan endometrium.</strong></li>
+      <li><strong>Ekogenisitas / struktur gema internal</strong> (homogen vs nonhomogen).</li>
+      <li><strong>Garis tengah (midline)</strong> endometrium.</li>
+      <li><strong>Sambungan endometrium–miometrium</strong> (tegas, ireguler, atau terputus)
+        dan <strong>halo subendometrium</strong>.</li>
+      <li><strong>Cairan intrakavitas.</strong></li>
+      <li><strong>Pola vaskular / color score</strong> pada Doppler.</li>
+    </ul>
+    <p class="sources"><strong>Sumber:</strong> Leone FPG, dkk. — konsensus IETA (<em>UOG</em> 2010).
+      Rujuk aslinya untuk definisi tepat tiap istilah.</p>
+  </section>
+
+  <!-- ————— IDEA ————— -->
+  <section id="tab-idea" class="pro-tabpanel" role="tabpanel" hidden>
+    <h2>IDEA — International Deep Endometriosis Analysis</h2>
+    <p>
+      Konsensus <strong>pendekatan sistematis USG transvaginal</strong> pada perempuan dengan
+      dugaan endometriosis, terutama <strong>endometriosis dalam (DIE)</strong>. Menetapkan
+      istilah &amp; langkah baku agar pemetaan pra-operasi konsisten.
+    </p>
+    <p><strong>Empat langkah</strong> (semua dikerjakan, urutan tidak baku):</p>
+    <ol class="pro-crit">
+      <li>Menilai <strong>uterus &amp; adneksa</strong> (tanda adenomiosis, endometrioma).</li>
+      <li><strong>Soft markers</strong>: nyeri terlokalisasi saat probe dan mobilitas/fiksasi ovarium.</li>
+      <li><strong>Kavum Douglas</strong> — menilai obliterasi dengan <strong>sliding sign</strong>.</li>
+      <li><strong>Nodul DIE</strong> di <strong>kompartemen anterior</strong> (mis. kandung kemih)
+        dan <strong>posterior</strong> (ligamentum uterosakral, septum rektovagina, vagina, rektum/usus).</li>
+    </ol>
+    <p class="sources"><strong>Sumber:</strong> Guerriero S, dkk. — konsensus IDEA (<em>UOG</em> 2016);
+      dilengkapi adendum (parametrium 2023; endometriosis superfisial 2025). Rujuk aslinya untuk definisi &amp; pengukuran.</p>
+  </section>
+
+  <!-- ————— Stadium Endometriosis ————— -->
+  <section id="tab-stadium" class="pro-tabpanel" role="tabpanel" hidden>
+    <h2>Stadium Endometriosis (r-ASRM)</h2>
+    <p>
+      Klasifikasi <strong>revised ASRM (r-ASRM, 1996)</strong> memberi <strong>skor poin</strong>
+      berdasarkan temuan <strong>laparoskopi</strong>: implan peritoneum &amp; ovarium (menurut
+      ukuran dan kedalaman), endometrioma, perlengketan, serta obliterasi kavum Douglas. Total
+      skor menentukan stadium:
+    </p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Stadium</th><th>Derajat</th><th>Skor</th></tr></thead>
+        <tbody>
+          <tr><td>I</td><td>Minimal</td><td>1–5</td></tr>
+          <tr><td>II</td><td>Ringan</td><td>6–15</td></tr>
+          <tr><td>III</td><td>Sedang</td><td>16–40</td></tr>
+          <tr><td>IV</td><td>Berat</td><td>&gt; 40</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      <strong>Keterbatasan:</strong> korelasi skor dengan <strong>nyeri dan kesuburan
+      terbatas</strong>. Klasifikasi <strong>#Enzian</strong> sering dipakai melengkapi untuk
+      memetakan endometriosis dalam per kompartemen.
+    </p>
+    <p class="sources"><strong>Sumber:</strong> American Society for Reproductive Medicine —
+      Revised classification of endometriosis (1996). Rujuk lembar skor ASRM asli untuk penilaian lengkap.</p>
+  </section>
+
+  <p><a href={withBase('/profesional')}>← Kembali ke Khusus Dokter</a></p>
+</ProLayout>
+
+<script>
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.pro-tab'));
+  const panels: Record<string, HTMLElement | null> = {
+    musa: document.getElementById('tab-musa'),
+    ieta: document.getElementById('tab-ieta'),
+    idea: document.getElementById('tab-idea'),
+    stadium: document.getElementById('tab-stadium'),
+  };
+  for (const t of tabs) {
+    t.addEventListener('click', () => {
+      const key = t.dataset.tab!;
+      tabs.forEach((x) => x.classList.toggle('is-active', x === t));
+      for (const [k, p] of Object.entries(panels)) if (p) p.hidden = k !== key;
+    });
+  }
+</script>
