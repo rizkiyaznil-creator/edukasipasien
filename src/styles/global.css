@@ -1173,6 +1173,45 @@ html.pro-gated #pro-gate[hidden] {
   display: flex;
 }
 
+/* —— Profil dokter (halaman Tentang) —— */
+.doc-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 330px) 1fr;
+  gap: 1rem 1.4rem;
+  align-items: center;
+  margin: 1.4rem 0 2rem;
+  padding: 1.1rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+}
+.doc-profile__photo {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+.doc-profile__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 0.15rem;
+}
+.doc-profile__role {
+  color: var(--c-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
+}
+.doc-profile__body p:last-child {
+  margin: 0;
+}
+@media (max-width: 560px) {
+  .doc-profile {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* —— Cetak (handout) —— */
 @media print {
   .site-header,

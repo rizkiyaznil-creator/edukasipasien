@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Callout from '../components/Callout.astro';
 import Disclaimer from '../components/Disclaimer.astro';
 import ShareApp from '../components/ShareApp.astro';
+import { Image } from 'astro:assets';
+import drPhoto from '../assets/dr-muhammad-rizki-yaznil.jpg';
 import { withBase } from '../lib/base';
 ---
 
@@ -16,6 +18,29 @@ import { withBase } from '../lib/base';
     untuk membantu pasien dan keluarga memahami kanker pada organ reproduksi
     perempuan — seperti kanker serviks, rahim, dan indung telur.
   </p>
+
+  <section class="doc-profile" aria-label="Tentang pengelola">
+    <Image
+      src={drPhoto}
+      alt="dr. Muhammad Rizki Yaznil, M.Ked(OG), SpOG.Subsp(Onk)"
+      width={800}
+      height={452}
+      class="doc-profile__photo"
+      loading="eager"
+    />
+    <div class="doc-profile__body">
+      <p class="doc-profile__name">dr. Muhammad Rizki Yaznil, M.Ked(OG), SpOG.Subsp(Onk)</p>
+      <p class="doc-profile__role">
+        Dokter Spesialis Obstetri &amp; Ginekologi · Subspesialis Ginekologi Onkologi
+      </p>
+      <p>
+        Medan Gyn Surgery disusun dan dikelola oleh dr. Rizki. Beliau
+        <strong>meninjau dan memvalidasi</strong> setiap materi agar tepercaya, terkini,
+        dan mudah dipahami — sekaligus mengembangkan situs ini sebagai sarana edukasi
+        bagi pasien dan sejawat.
+      </p>
+    </div>
+  </section>
 
   <h2>Untuk apa situs ini?</h2>
   <p>
