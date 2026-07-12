@@ -30,27 +30,7 @@ const toc = headings.filter((h) => h.depth === 2);
     <h1>{topic.data.title}</h1>
     <p class="lead">{topic.data.summary}</p>
 
-    {
-      topic.data.validated ? (
-        <div class="review-banner done">
-          <span aria-hidden="true">✓</span>
-          <div>
-            Konten ini telah <strong>divalidasi</strong>
-            {topic.data.reviewer ? ` oleh ${topic.data.reviewer}` : ''}.
-            Diperbarui {fmt(topic.data.updatedDate)}.
-          </div>
-        </div>
-      ) : (
-        <div class="review-banner pending">
-          <span aria-hidden="true">📝</span>
-          <div>
-            <strong>Draf — menunggu validasi dokter.</strong> Materi ini disusun
-            untuk tujuan edukasi dan masih dalam proses peninjauan oleh dokter
-            spesialis. Diperbarui {fmt(topic.data.updatedDate)}.
-          </div>
-        </div>
-      )
-    }
+    <p class="topic-updated">Diperbarui {fmt(topic.data.updatedDate)}</p>
 
     <ShareQR url={shareUrl} />
 

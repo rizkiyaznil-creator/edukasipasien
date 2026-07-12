@@ -30,15 +30,8 @@ const showMeta = !noBadge || !!meta;
   {
     showMeta && (
       <span class="meta">
-        {!noBadge &&
-          (soon ? (
-            <span class="badge badge--soon">Segera hadir</span>
-          ) : validated ? (
-            <span class="badge badge--ok">✓ Tervalidasi dokter</span>
-          ) : (
-            <span class="badge badge--draft">Draf · menunggu validasi</span>
-          ))}
-        {meta && <span>{!noBadge ? ' · ' : ''}{meta}</span>}
+        {!noBadge && soon && <span class="badge badge--soon">Segera hadir</span>}
+        {meta && <span>{!noBadge && soon ? ' · ' : ''}{meta}</span>}
       </span>
     )
   }
