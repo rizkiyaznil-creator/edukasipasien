@@ -61,6 +61,15 @@ const searchItems = [...topicItems, ...glossaryItems];
       ))
     }
     <li class="tr-empty" hidden>Tidak ada topik atau istilah yang cocok. Coba kata kunci lain.</li>
+    <li class="tr-all" hidden>
+      <a id="tr-all-link" href="#">
+        <span class="tr-ic" aria-hidden="true">🔎</span>
+        <span class="tr-txt">
+          <strong id="tr-all-label">Cari di seluruh isi</strong>
+          <small>Termasuk isi artikel</small>
+        </span>
+      </a>
+    </li>
   </ul>
 </div>
 
@@ -137,6 +146,15 @@ const searchItems = [...topicItems, ...glossaryItems];
     text-align: center;
     color: var(--c-text-muted);
   }
+  .topic-results .tr-all {
+    border-top: 1px solid var(--c-border);
+    margin-top: 0.25rem;
+    padding-top: 0.25rem;
+  }
+  .topic-results .tr-all small {
+    color: var(--c-text-muted);
+    font-size: 0.8rem;
+  }
 </style>
 
 <script>
@@ -148,6 +166,10 @@ const searchItems = [...topicItems, ...glossaryItems];
       results.querySelectorAll<HTMLLIElement>('.topic-result')
     );
     const empty = results.querySelector<HTMLLIElement>('.tr-empty');
+    const allRow = results.querySelector<HTMLLIElement>('.tr-all');
+    const allLink = document.getElementById('tr-all-link') as HTMLAnchorElement | null;
+    const allLabel = document.getElementById('tr-all-label');
+    const CARI = import.meta.env.BASE_URL.replace(/\/$/, '') + '/cari?q=';
     let activeIdx = -1;
 
     const visible = () => items.filter((li) => !li.hidden);
@@ -186,6 +208,12 @@ const searchItems = [...topicItems, ...glossaryItems];
         if (match) shown++;
       }
       if (empty) empty.hidden = shown > 0;
+      if (allRow && allLink) {
+        const raw = input.value.trim();
+        allLink.href = CARI + encodeURIComponent(raw);
+        if (allLabel) allLabel.textContent = `Cari “${raw}” di seluruh isi`;
+        allRow.hidden = false;
+      }
       setActive(-1);
       open();
     };
@@ -204,11 +232,18 @@ const searchItems = [...topicItems, ...glossaryItems];
         e.preventDefault();
         setActive(Math.max(activeIdx - 1, 0));
       } else if (e.key === 'Enter') {
-        const target = activeIdx >= 0 ? vis[activeIdx] : vis[0];
-        const link = target && target.querySelector('a');
-        if (link) {
-          e.preventDefault();
-          window.location.href = link.href;
+        if (activeIdx >= 0 && vis[activeIdx]) {
+          const link = vis[activeIdx].querySelector('a');
+          if (link) {
+            e.preventDefault();
+            window.location.href = link.href;
+          }
+        } else {
+          const raw = input.value.trim();
+          if (raw.length >= 2) {
+            e.preventDefault();
+            window.location.href = CARI + encodeURIComponent(raw);
+          }
         }
       } else if (e.key === 'Escape') {
         close();

@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Cari"
+  description="Cari kata kunci di seluruh isi artikel dan kamus Medan Gyn Surgery."
+>
+  <h1>🔎 Cari di seluruh isi</h1>
+  <p class="lead">
+    Ketik kata kunci untuk mencari <strong>di dalam isi artikel</strong> dan kamus.
+    Hasil menampilkan setiap tempat kata itu muncul beserta cuplikannya.
+  </p>
+
+  <div class="cari-box">
+    <span class="ic" aria-hidden="true">🔎</span>
+    <input
+      id="cari-q"
+      type="search"
+      autocomplete="off"
+      placeholder="mis. mimisan, tawaf, biopsi, mual"
+      aria-label="Cari kata kunci"
+    />
+  </div>
+
+  <p id="cari-info" class="cari-info" aria-live="polite"></p>
+  <ul id="cari-results" class="cari-results"></ul>
+</BaseLayout>
+
+<style>
+  .cari-box {
+    position: relative;
+    margin: 1.2rem 0 0.5rem;
+  }
+  .cari-box > .ic {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .cari-box input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.6rem;
+    font-size: 1.05rem;
+    color: inherit;
+    background: var(--c-surface);
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--radius-sm);
+  }
+  .cari-box input:focus-visible {
+    outline: 2px solid var(--c-primary);
+    outline-offset: 1px;
+    border-color: var(--c-primary);
+  }
+  .cari-info {
+    color: var(--c-text-muted);
+    font-size: 0.9rem;
+    margin: 0.6rem 0;
+  }
+  .cari-results {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .cari-item a {
+    display: flex;
+    gap: 0.7rem;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cari-item a:hover {
+    border-color: var(--c-primary);
+    box-shadow: 0 4px 14px rgba(15, 118, 110, 0.1);
+  }
+  .cari-badge {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    flex: none;
+  }
+  .cari-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .cari-title {
+    font-weight: 700;
+  }
+  .cari-sec {
+    color: var(--c-primary-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .cari-snip {
+    color: var(--c-text-muted);
+    font-size: 0.9rem;
+  }
+  .cari-snip mark {
+    background: #fde68a;
+    color: inherit;
+    padding: 0 0.1em;
+    border-radius: 3px;
+  }
+</style>
+
+<script>
+  const input = document.getElementById('cari-q') as HTMLInputElement;
+  const info = document.getElementById('cari-info')!;
+  const out = document.getElementById('cari-results')!;
+  const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+  let index: any[] | null = null;
+
+  const esc = (s: string) =>
+    s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+  function snippet(text: string, q: string) {
+    const lower = text.toLowerCase();
+    const i = lower.indexOf(q);
+    if (i === -1) return esc(text.slice(0, 150)) + (text.length > 150 ? ' …' : '');
+    const start = Math.max(0, i - 55);
+    const end = Math.min(text.length, i + q.length + 95);
+    const slice = text.slice(start, end);
+    const sl = slice.toLowerCase();
+    let html = '';
+    let idx = 0;
+    let pos: number;
+    while ((pos = sl.indexOf(q, idx)) !== -1) {
+      html += esc(slice.slice(idx, pos)) + '<mark>' + esc(slice.slice(pos, pos + q.length)) + '</mark>';
+      idx = pos + q.length;
+    }
+    html += esc(slice.slice(idx));
+    return (start > 0 ? '… ' : '') + html + (end < text.length ? ' …' : '');
+  }
+
+  function run(raw: string) {
+    const q = raw.trim().toLowerCase();
+    if (q.length < 2 || !index) {
+      info.textContent = q.length >= 2 ? 'Memuat…' : 'Ketik minimal 2 huruf.';
+      out.innerHTML = '';
+      return;
+    }
+    const hits = index
+      .map((r) => {
+        const inTitle = r.title.toLowerCase().includes(q);
+        const inText = r.text.toLowerCase().includes(q);
+        return inTitle || inText ? { r, inTitle } : null;
+      })
+      .filter(Boolean) as { r: any; inTitle: boolean }[];
+    hits.sort((a, b) => Number(b.inTitle) - Number(a.inTitle));
+
+    info.textContent = hits.length
+      ? `${hits.length} hasil untuk “${raw.trim()}”`
+      : `Tidak ada hasil untuk “${raw.trim()}”. Coba kata kunci lain.`;
+
+    out.innerHTML = hits
+      .map(({ r }) => {
+        const href = r.url + (r.anchor ? '#' + r.anchor : '');
+        const ic = r.type === 'kamus' ? '📖' : '📄';
+        return `<li class="cari-item"><a href="${href}">
+          <span class="cari-badge" aria-hidden="true">${ic}</span>
+          <span class="cari-body">
+            <span class="cari-title">${esc(r.title)}</span>
+            ${r.section ? `<span class="cari-sec">${esc(r.section)}</span>` : ''}
+            <span class="cari-snip">${snippet(r.text, q)}</span>
+          </span></a></li>`;
+      })
+      .join('');
+  }
+
+  function setQuery(v: string) {
+    const url = new URL(location.href);
+    if (v.trim()) url.searchParams.set('q', v.trim());
+    else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+  }
+
+  const q0 = new URLSearchParams(location.search).get('q') || '';
+  input.value = q0;
+  info.textContent = 'Memuat indeks…';
+
+  fetch(BASE + '/search-index.json')
+    .then((r) => r.json())
+    .then((data) => {
+      index = data;
+      run(input.value);
+    })
+    .catch(() => {
+      info.textContent = 'Gagal memuat indeks pencarian. Coba muat ulang halaman.';
+    });
+
+  input.addEventListener('input', () => {
+    run(input.value);
+    setQuery(input.value);
+  });
+  input.focus();
+</script>
