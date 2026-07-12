@@ -1174,6 +1174,14 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Produk hasil banyak proses industri yang biasanya tinggi gula, garam, lemak tidak sehat, dan bahan tambahan — misalnya mi instan, minuman bersoda, sosis/nugget, dan camilan kemasan. Sebaiknya dibatasi.',
   },
+  {
+    term: 'Noretisteron',
+    slug: 'noretisteron',
+    category: 'Pengobatan',
+    aliases: ['norethisterone', 'norethindrone', 'primolut', 'primolut n', 'penunda haid'],
+    definition:
+      'Obat golongan progestogen yang dapat menunda datangnya haid; sering dipakai untuk menunda haid saat umrah/haji. Bukan alat kontrasepsi, dan pemakaiannya harus atas anjuran/resep dokter.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
