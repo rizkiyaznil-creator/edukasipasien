@@ -1190,6 +1190,14 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Progestogen dalam bentuk suntikan (depot) yang bekerja beberapa bulan dan dapat menekan haid. Umum dipakai sebagai KB suntik, dan pada kebutuhan tertentu dapat dimanfaatkan untuk menekan haid — atas anjuran dokter.',
   },
+  {
+    term: 'Osteoporosis (Pengeroposan Tulang)',
+    slug: 'osteoporosis',
+    category: 'Umum',
+    aliases: ['pengeroposan tulang', 'tulang keropos', 'kepadatan tulang'],
+    definition:
+      'Kondisi tulang menjadi lebih rapuh dan mudah patah karena kepadatannya menurun. Risikonya meningkat setelah menopause karena berkurangnya hormon estrogen.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
