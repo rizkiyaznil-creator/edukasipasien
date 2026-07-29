@@ -1198,6 +1198,14 @@ export const glossary: GlossaryEntry[] = [
     definition:
       'Kondisi tulang menjadi lebih rapuh dan mudah patah karena kepadatannya menurun. Risikonya meningkat setelah menopause karena berkurangnya hormon estrogen.',
   },
+  {
+    term: 'Dienogest',
+    slug: 'dienogest',
+    category: 'Pengobatan',
+    aliases: ['progestin', 'progestin endometriosis'],
+    definition:
+      'Obat golongan progestin untuk endometriosis — meredakan nyeri dan, bila diminum jangka panjang setelah operasi, membantu mencegah kekambuhan. Efek samping tersering adalah bercak/perdarahan tidak teratur. Dipakai atas anjuran dokter.',
+  },
 ];
 
 /** Cari satu istilah berdasarkan slug. */
