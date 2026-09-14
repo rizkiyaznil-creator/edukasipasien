@@ -1217,6 +1217,59 @@ html.pro-gated #pro-gate[hidden] {
   font-size: 0.85rem;
 }
 
+/* —— Ajakan Instagram (beranda) —— */
+.ig-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem 1.2rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 2.2rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-primary-soft);
+}
+.ig-cta__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--c-surface);
+  color: var(--c-primary-dark);
+}
+.ig-cta__body {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.ig-cta__title {
+  margin: 0 0 0.15rem;
+  font-family: var(--font-heading, inherit);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--c-primary-dark);
+}
+.ig-cta__text {
+  margin: 0;
+  font-size: 0.94rem;
+}
+.ig-cta__note {
+  margin: 0.45rem 0 0;
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+}
+.ig-cta__btn {
+  flex: none;
+  white-space: nowrap;
+}
+@media (max-width: 560px) {
+  .ig-cta__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* —— Cetak (handout) —— */
 @media print {
   .site-header,
